@@ -8,7 +8,6 @@ import PROGM013 from "@/images/PROGM013.png";
 import PROGM019 from "@/images/PROGM019.png";
 import WINFI001 from "@/images/WINFI001.png";
 import { Metadata } from "next";
-import { useRef } from "react";
 
 const metadata: Metadata = {
   title: "Social",
@@ -51,7 +50,7 @@ const Social: React.FC = () => {
   return (
     <ProgramWindow
       className="z-20"
-      offset={{ x: 64, y: 192 }}
+      offset={{ x: 352, y: 192 }}
       origin="tl"
       size={{ height: 320, width: 240 }}
       title={`${metadata.title}`}
