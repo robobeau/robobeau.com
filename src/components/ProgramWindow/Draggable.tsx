@@ -2,7 +2,6 @@
 
 import { HANDLE_CLASS } from "@/constants";
 import PositionContext from "@/contexts/PositionContext";
-import SizeContext from "@/contexts/SizeContext";
 import { PropsWithChildren, useContext, useRef } from "react";
 import _Draggable, { DraggableEventHandler } from "react-draggable";
 
@@ -14,7 +13,6 @@ const Draggable: React.FC<DraggableProps> = (props) => {
   const { className, children } = props;
 
   const [position, setPosition] = useContext(PositionContext);
-  const [size] = useContext(SizeContext);
   const dragHandleRef = useRef(null);
 
   const onDragHandler: DraggableEventHandler = (event, data) => {
@@ -34,21 +32,14 @@ const Draggable: React.FC<DraggableProps> = (props) => {
 
   return (
     <_Draggable
+      cancel="a, button"
       defaultClassName={className}
       nodeRef={dragHandleRef}
-      position={position}
       onDrag={onDragHandler}
       onStart={onStartHandler}
+      position={position}
     >
-      <div
-        ref={dragHandleRef}
-        style={{
-          height: `${size.height}px`,
-          width: `${size.width}px`,
-        }}
-      >
-        {children}
-      </div>
+      <div ref={dragHandleRef}>{children}</div>
     </_Draggable>
   );
 };
