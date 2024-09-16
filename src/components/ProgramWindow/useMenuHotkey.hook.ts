@@ -1,5 +1,3 @@
-"use client";
-
 import { MENU_HOTKEY_EVENT } from "@/constants";
 import MenuHotkeyEvent from "@/events/MenuHotkey";
 import { useCallback, useEffect } from "react";

@@ -1,5 +1,3 @@
-"use client";
-
 import { MENU_HOTKEY_EVENT } from "@/constants";
 
 class MenuHotkey extends CustomEvent<{ key: string }> {
