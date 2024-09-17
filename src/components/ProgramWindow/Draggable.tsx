@@ -39,7 +39,9 @@ const Draggable: React.FC<DraggableProps> = (props) => {
       onStart={onStartHandler}
       position={position}
     >
-      <div ref={dragHandleRef}>{children}</div>
+      <div ref={dragHandleRef}>
+        {children}
+      </div>
     </_Draggable>
   );
 };

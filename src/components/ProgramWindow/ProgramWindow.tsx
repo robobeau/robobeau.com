@@ -106,7 +106,7 @@ function getStartingPosition(
 }
 
 function getViewport() {
-  return window
+  return typeof window !== "undefined"
     ? {
         height: window.innerHeight,
         width: window.innerWidth,
