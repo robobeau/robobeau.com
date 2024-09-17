@@ -31,7 +31,9 @@ const About: FC<Page> = () => {
           alt={MY_NAME}
           className="absolue h-full inset-0 object-cover w-full"
           height={450}
+          priority
           src={ReneMoshed}
+          unoptimized
           width={450}
         />
       </ProgramWindow>
