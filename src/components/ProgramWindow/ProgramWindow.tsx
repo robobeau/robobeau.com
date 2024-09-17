@@ -130,6 +130,7 @@ const ProgramWindow: FC<ProgramWindowProps> = (props) => {
     size = initialSize,
     title,
   } = props;
+  const [isMounted, setIsMounted] = useState(false);
   const positionState = useState(() => {
     const viewPort = getViewport();
 
@@ -139,11 +140,7 @@ const ProgramWindow: FC<ProgramWindowProps> = (props) => {
   const router = useRouter();
 
   useEffect(() => {
-    const [_, setPosition] = positionState;
-    const viewPort = getViewport();
-    const newPosition = getStartingPosition(origin, viewPort, offset, size);
-
-    setPosition(newPosition);
+    setIsMounted(true);
   }, []);
 
   const onCloseHandler = () => {
@@ -185,6 +182,10 @@ const ProgramWindow: FC<ProgramWindowProps> = (props) => {
 
   const overflowClass = isScrollable ? "overflow-auto" : "";
   const paddingClass = hasPadding ? "p-4" : "";
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <PositionContext.Provider value={positionState}>
