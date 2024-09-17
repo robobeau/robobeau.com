@@ -29,7 +29,7 @@ const About: FC<Page> = () => {
       >
         <Image
           alt={MY_NAME}
-          className="absolue bottom-0 h-full left-0 object-cover right-0 top-0 w-full"
+          className="absolue h-full inset-0 object-cover w-full"
           height={450}
           src={ReneMoshed}
           width={450}
