@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading/Loading";
 import createService from "@/services/blog";
 import Page from "@/types/page";
 import { Metadata, ResolvingMetadata } from "next";
@@ -30,7 +31,10 @@ const Blog = async (props: Page<BlogParams>) => {
   const { day, month, title, year } = params;
 
   const Blog = dynamic(
-    () => import(`../../../../../blogs/${year}/${month}/${day}/${title}.md`)
+    () => import(`../../../../../blogs/${year}/${month}/${day}/${title}.md`),
+    {
+      loading: () => <Loading />,
+    }
   );
 
   return (
