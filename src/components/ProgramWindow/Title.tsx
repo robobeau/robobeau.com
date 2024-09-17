@@ -16,14 +16,14 @@ const Title: React.FC<TitleProps> = (props) => {
     <div
       className={`
         ${HANDLE_CLASS}
-        bg-blue-800 border-black border-b flex items-center h-8 justify-center relative text-xl text-white
+        bg-blue-800 border-black border-b flex items-stretch h-8 relative text-xl text-white
         ${vt323.className}
       `}
     >
       <button
         className={`
           group/button
-          absolute bg-slate-300 border-black border-r bottom-0 cursor-pointer flex items-center left-0 justify-center outline-none text-white top-0 w-8 z-10
+          bg-slate-300 border-black border-r cursor-pointer flex items-center justify-center outline-none text-white w-8 z-10
           focus:bg-slate-400 focus:text-black
           ${vt323.className}
         `}
@@ -37,7 +37,8 @@ const Title: React.FC<TitleProps> = (props) => {
           `}
         ></span>
       </button>
-      <span className={`${HANDLE_CLASS} select-none`}>{title}</span>
+
+      <span className={`${HANDLE_CLASS} grow select-none text-center`}>{title}</span>
     </div>
   );
 };
