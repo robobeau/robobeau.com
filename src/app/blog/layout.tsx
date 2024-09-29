@@ -1,5 +1,7 @@
-import { MenuItem } from "@/components/ProgramWindow/Menu";
-import ProgramWindow from "@/components/ProgramWindow/ProgramWindow";
+import { MenuItem } from "@/components/Program/Menu";
+import Program from "@/components/Program/Program";
+import { ProgramIconWithUrlProps } from "@/components/ProgramIcon/ProgramIcon";
+import NOTEP001 from "@/images/NOTEP001.png";
 import createBlogService from "@/services/blog";
 import { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
@@ -13,6 +15,12 @@ const metadata: Metadata = {
   title: "Blog",
 };
 
+const programIcon: ProgramIconWithUrlProps = {
+  image: NOTEP001,
+  label: "Blog",
+  url: "/blog",
+};
+
 const Layout: FC<PropsWithChildren> = async (props) => {
   const { children } = props;
 
@@ -20,21 +28,22 @@ const Layout: FC<PropsWithChildren> = async (props) => {
   const blogs = await blogService.getBlogs();
 
   return (
-    <ProgramWindow
-      className="z-20"
+    <Program
+      // className="z-20"
       hasPadding={false}
+      icon={programIcon.image}
       isScrollable={false}
       menu={blogMenu}
       origin="tl"
       offset={{ x: 256, y: 64 }}
-      size={{ height: 480, width: 480 }}
+      initialSize={{ height: 480, width: 480 }}
       title="Blog"
     >
       <FileBrowser blogs={blogs} />
 
       {children}
-    </ProgramWindow>
+    </Program>
   );
 };
 
-export { Layout as default, metadata };
+export { Layout as default, metadata, programIcon };

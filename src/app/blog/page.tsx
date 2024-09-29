@@ -1,5 +1,12 @@
-const Blogs: React.FC = async () => {
+import { Metadata } from "next";
+import { FC } from "react";
+
+const metadata: Metadata = {
+  title: "Blog",
+};
+
+const Blog: FC = () => {
   return null;
 };
 
-export { Blogs as default };
+export { Blog as default, metadata };

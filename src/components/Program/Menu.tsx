@@ -1,4 +1,4 @@
-import vt323 from "@/fonts/vt323";
+import w95fa from "@/fonts/w95fa";
 import Link from "next/link";
 import { HTMLAttributeAnchorTarget } from "react";
 import useMenuHotkey from "./useMenuHotkey.hook";
@@ -16,7 +16,7 @@ const Menu: React.FC<{ menu: Array<MenuItem> }> = (props) => {
   useMenuHotkey(menu);
 
   return (
-    <div className="border-b border-black flex h-8 items-center items-center relative">
+    <div className="border-b border-black flex items-center items-center relative">
       {menu.map((menuItem, index) => {
         const { url, label, target } = menuItem;
         const [firstLetter, ...rest] = label.split("");
@@ -24,10 +24,10 @@ const Menu: React.FC<{ menu: Array<MenuItem> }> = (props) => {
         return (
           <Link
             className={`
-              outline-none px-2 text-xl
+              font-bold outline-none px-2
               focus:bg-blue-800 focus:text-white
               hover:bg-blue-800 hover:text-white
-              ${vt323.className}
+              ${w95fa.className}
             `}
             href={url}
             key={index}

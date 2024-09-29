@@ -1,67 +1,85 @@
+import Program from "@/components/Program/Program";
 import ProgramIcon, {
-  ProgramIconProps,
+  ProgramIconWithUrlProps,
 } from "@/components/ProgramIcon/ProgramIcon";
-import ProgramWindow from "@/components/ProgramWindow/ProgramWindow";
 import MSMAI012 from "@/images/MSMAI012.png";
 import PROGM001 from "@/images/PROGM001.png";
 import PROGM013 from "@/images/PROGM013.png";
 import PROGM019 from "@/images/PROGM019.png";
+import PROGM021 from "@/images/PROGM021.png";
 import WINFI001 from "@/images/WINFI001.png";
 import { Metadata } from "next";
+import Link from "next/link";
+import { FC } from "react";
 
 const metadata: Metadata = {
   title: "Social",
 };
 
-const programs: Array<Omit<ProgramIconProps, "key">> = [
+const programIcon: ProgramIconWithUrlProps = {
+  image: PROGM021,
+  label: "Social",
+  url: "/social",
+};
+
+const programIcons: Array<ProgramIconWithUrlProps> = [
   {
-    icon: WINFI001,
+    image: WINFI001,
     label: "Backloggd",
     target: "_blank",
     url: "https://backloggd.com/u/robobeau",
   },
   {
-    icon: PROGM001,
+    image: PROGM001,
     label: "Bluesky",
     target: "_blank",
     url: "https://bsky.app/profile/robobeau.com",
   },
   {
-    icon: PROGM013,
+    image: PROGM013,
     label: "Instagram",
     target: "_blank",
     url: "https://instagram.com/robobeau",
   },
   {
-    icon: PROGM019,
+    image: PROGM019,
     label: "Letterboxd",
     target: "_blank",
     url: "https://letterboxd.com/robobeau",
   },
   {
-    icon: MSMAI012,
+    image: PROGM021,
+    label: "LinkedIn",
+    target: "_blank",
+    url: "https://www.linkedin.com/in/reneesteves",
+  },
+  {
+    image: MSMAI012,
     label: "Twitter",
     target: "_blank",
     url: "https://twitter.com/robobeau",
   },
 ];
 
-const Social: React.FC = () => {
+const Social: FC = () => {
   return (
-    <ProgramWindow
-      className="z-20"
+    <Program
+      // className="z-20"
+      icon={programIcon.image}
       offset={{ x: 352, y: 192 }}
       origin="tl"
-      size={{ height: 320, width: 240 }}
+      initialSize={{ height: 320, width: 240 }}
       title={`${metadata.title}`}
     >
       <div className="flex flex-row flex-wrap gap-x-8 gap-y-4 items-end mt-auto">
-        {programs.map((program, index) => (
-          <ProgramIcon key={index} {...program} />
+        {programIcons.map(({ target, url, ...programIconProps }, index) => (
+          <Link href={url} key={index} target={target}>
+            <ProgramIcon {...programIconProps} />
+          </Link>
         ))}
       </div>
-    </ProgramWindow>
+    </Program>
   );
 };
 
-export { Social as default, metadata };
+export { Social as default, metadata, programIcon };

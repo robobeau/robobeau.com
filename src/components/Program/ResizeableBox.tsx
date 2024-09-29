@@ -1,5 +1,6 @@
 "use client";
 
+import MaximizedContext from "@/contexts/MaximizedContext";
 import PositionContext from "@/contexts/PositionContext";
 import { PropsWithChildren, useContext } from "react";
 import { ResizableBox as _ResizableBox, ResizableProps } from "react-resizable";
@@ -20,7 +21,7 @@ interface ResizableBoxProps
   extends PropsWithChildren,
     Pick<
       ResizableProps,
-      "className" | "maxConstraints" | "minConstraints" | "resizeHandles"
+      "className" | "maxConstraints" | "minConstraints" | "resizeHandles" | "onResizeStart"
     > {}
 
 const ResizableBox: React.FC<ResizableBoxProps> = (props) => {
@@ -29,10 +30,12 @@ const ResizableBox: React.FC<ResizableBoxProps> = (props) => {
     children,
     minConstraints = [240, 160],
     maxConstraints = [640, 480],
+    onResizeStart,
     resizeHandles = ["nw", "n", "ne", "w", "e", "sw", "s", "se"],
   } = props;
 
   const [position, setPosition] = useContext(PositionContext);
+  const [isMaximized] = useContext(MaximizedContext);
   const [size, setSize] = useContext(SizeContext);
 
   const onResizeHandler: ResizableProps["onResize"] = (event, data) => {
@@ -78,16 +81,22 @@ const ResizableBox: React.FC<ResizableBoxProps> = (props) => {
     });
   };
 
+  const resizableCursorClass = isMaximized ? "cursor-default hidden" : "";
+
   return (
     <_ResizableBox
       className={className}
       handle={(handleAxis, ref) => (
-        <span className={handleClasses[handleAxis]} ref={ref} />
+        <span
+          className={`${handleClasses[handleAxis]} ${resizableCursorClass}`}
+          ref={ref}
+        />
       )}
       height={size.height}
       minConstraints={minConstraints}
       maxConstraints={maxConstraints}
       onResize={onResizeHandler}
+      onResizeStart={onResizeStart}
       resizeHandles={resizeHandles}
       width={size.width}
     >

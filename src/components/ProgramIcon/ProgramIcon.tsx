@@ -1,38 +1,52 @@
-import vt323 from "@/fonts/vt323";
-import PROGM008 from "@/images/PROGM008.png";
+import w95fa from "@/fonts/w95fa";
+import PROGM001 from "@/images/PROGM001.png";
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
-import { FC, HTMLAttributeAnchorTarget, PropsWithChildren } from "react";
+import { FC, HTMLAttributeAnchorTarget, MouseEventHandler } from "react";
 
-interface ProgramIconProps extends PropsWithChildren {
-  icon?: StaticImageData;
+interface ProgramIconProps {
+  className?: string;
+  image?: StaticImageData;
+  isMinimized?: boolean;
   label: string;
+  onClick?: MouseEventHandler<HTMLElement>;
+}
+
+interface ProgramIconWithUrlProps extends ProgramIconProps {
   target?: HTMLAttributeAnchorTarget;
   url: string;
 }
 
 const ProgramIcon: FC<ProgramIconProps> = (props) => {
-  const { icon = PROGM008, label, target, url } = props;
+  const {
+    className,
+    image = PROGM001,
+    isMinimized = false,
+    label,
+    onClick,
+  } = props;
+
+  const programIconClasses = `
+    group/link flex flex-col gap-1 items-center outline-none shrink-0
+    ${className}
+  `.trim();
+  const labelClasses = `
+    leading-4 p-1 select-none
+    group-focus/link:bg-blue-800 group-focus/link:text-white
+    ${isMinimized ? "bg-blue-800 text-white" : ""}
+    ${w95fa.className}
+  `.trim();
 
   return (
-    <Link
-      className="group/link flex flex-col gap-1 items-center outline-none shrink-0"
-      href={url}
-      target={target}
-    >
-      <Image src={icon} alt={`${label} Icon`} />
+    <span className={programIconClasses} onClick={onClick}>
+      <Image alt={`${label} Icon`} draggable={false} src={image} />
 
-      <span
-        className={`
-          leading-4 p-1 text-xl
-          group-focus/link:bg-blue-800 group-focus/link:text-white
-          ${vt323.className}
-        `}
-      >
-        {label}
-      </span>
-    </Link>
+      <span className={labelClasses}>{label}</span>
+    </span>
   );
 };
 
-export { ProgramIcon as default, type ProgramIconProps };
+export {
+  ProgramIcon as default,
+  type ProgramIconProps,
+  type ProgramIconWithUrlProps,
+};
