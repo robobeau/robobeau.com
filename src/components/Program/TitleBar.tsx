@@ -5,22 +5,59 @@ import MaximizedContext from "@/contexts/MaximizedContext";
 import MinimizedContext from "@/contexts/MinimizedContext";
 import PositionContext from "@/contexts/PositionContext";
 import PrevPositionContext from "@/contexts/PrevPositionContext";
-import PrevSizeContext from "@/contexts/PrevSizeContext";
-import SizeContext from "@/contexts/SizeContext";
 import w95fa from "@/fonts/w95fa";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import Button from "../Button/Button";
 
 interface TitleBarProps {
-  isMaximizable: boolean;
-  isMinimizable: boolean;
+  isFocused?: boolean;
+  isMaximizable?: boolean;
+  isMinimizable?: boolean;
   onClose?: () => void;
   title: string;
 }
 
+const commonIconClasses =
+  "block border-solid border-x-transparent border-x-[6px] h-0 relative w-0";
+
+const MaximizeIcon: FC = () => {
+  return (
+    <span
+      className={`${commonIconClasses} border-b-black border-b-[6px] top-[-1px]`}
+    ></span>
+  );
+};
+
+const MinimizeIcon: FC = () => {
+  return (
+    <span
+      className={`${commonIconClasses} border-t-black border-t-[6px] top-[1px]`}
+    ></span>
+  );
+};
+
+const RestoreIcon: FC = () => {
+  return (
+    <>
+      <span
+        className={`${commonIconClasses} border-b-black border-b-[6px] top-[-1px]`}
+      ></span>
+      <span
+        className={`${commonIconClasses} border-t-black border-t-[6px] top-[1px]`}
+      ></span>
+    </>
+  );
+};
+
 const TitleBar: React.FC<TitleBarProps> = (props) => {
-  const { isMaximizable, isMinimizable, onClose, title } = props;
+  const {
+    isFocused = false,
+    isMaximizable = true,
+    isMinimizable = true,
+    onClose,
+    title,
+  } = props;
 
   const [isMaximized, setIsMaximized] = useContext(MaximizedContext);
   const [isMinimized, setIsMinimized] = useContext(MinimizedContext);
@@ -44,67 +81,75 @@ const TitleBar: React.FC<TitleBarProps> = (props) => {
     setPrevPosition(null);
   };
 
+  // #region Classes
+  const closeButtonClasses = `
+    group/button
+    absolute bg-slate-300 border-black border-r bottom-0 cursor-pointer flex items-center justify-center left-0 outline-none text-white top-0 w-7 z-10
+    focus:bg-slate-400 focus:text-black
+  `.trim();
+  const closeButtonIconClasses = `
+    bg-white border-black border h-1 shadow-sm shadow-slate-800 w-1/2
+    group-focus/button:bg-black group-focus/button:border-white group-focus/button:shadow-white
+  `.trim();
+  const minMaxButtonClasses = "ml-[-1px] w-7";
+  const titleBarClasses = `
+    ${isFocused ? "bg-title-bar text-white" : "bg-white text-black"}
+    border-black border-b flex items-stretch h-7 relative shrink-0
+    ${w95fa.className}
+  `.trim();
+  const titleClasses = `
+    ${HANDLE_CLASS}
+    content-center font-bold grow select-none text-center
+  `.trim();
+  // #endregion
+
   return (
-    <div
-      className={`
-        ${HANDLE_CLASS}
-        bg-title-bar border-black border-b flex items-stretch h-7 relative shrink-0
-        ${w95fa.className}
-      `}
-    >
+    <div className={titleBarClasses}>
       <button
-        className={`
-          group/button
-          absolute bg-slate-300 border-black border-r bottom-0 cursor-pointer flex items-center justify-center left-0 outline-none text-white top-0 w-7 z-10
-          focus:bg-slate-400 focus:text-black
-        `}
+        className={closeButtonClasses}
         onClick={onClose ?? router.back}
         title="Go Back"
       >
-        <span
-          className={`
-            bg-white border-black border h-1 shadow-sm shadow-slate-800 w-1/2
-            group-focus/button:bg-black group-focus/button:border-white group-focus/button:shadow-white
-          `}
-        ></span>
+        <span className={closeButtonIconClasses}></span>
       </button>
 
-      <span
-        className={`${HANDLE_CLASS} content-center font-bold grow select-none text-center text-white`}
-      >
-        {title}
-      </span>
+      <span className={titleClasses}>{title}</span>
 
       {(isMaximizable || isMinimizable) && (
-        <span className="absolute bottom-0 flex right-0 top-0 z-10">
+        <span className="absolute bottom-[-1px] flex gap-[-1px] right-[-1px] top-[-1px] z-10">
           {isMinimizable && (
             <Button
-              className="w-7"
+              className={minMaxButtonClasses}
+              hasOutline={false}
+              hasRoundedCorners={false}
               hasTextOutline={false}
               onClick={minimizeHandler}
             >
-              <span className="block border-t-black border-t-[6px] border-solid border-x-transparent border-x-[6px] h-0 relative top-[1px] w-0"></span>
+              <MinimizeIcon />
             </Button>
           )}
 
           {isMaximizable && !isMaximized && (
             <Button
-              className="w-7"
+              className={minMaxButtonClasses}
+              hasOutline={false}
+              hasRoundedCorners={false}
               hasTextOutline={false}
               onClick={maximizeHandler}
             >
-              <span className="block border-b-black border-b-[6px] border-solid border-x-transparent border-x-[6px] h-0 relative top-[-1px] w-0"></span>
+              <MaximizeIcon />
             </Button>
           )}
 
           {isMaximized && (
             <Button
-              className="w-7"
+              className={minMaxButtonClasses}
+              hasOutline={false}
+              hasRoundedCorners={false}
               hasTextOutline={false}
               onClick={restoreHandler}
             >
-              <span className="block border-b-black border-b-[6px] border-solid border-x-transparent border-x-[6px] h-0 relative top-[-1px] w-0"></span>
-              <span className="block border-t-black border-t-[6px] border-solid border-x-transparent border-x-[6px] h-0 relative top-[1px] w-0"></span>
+              <RestoreIcon />
             </Button>
           )}
         </span>
