@@ -1,7 +1,7 @@
 ---
   author: 'René Esteves'
   date: '2024/08/29'
-  title: "A slightly longer title 'cause why the heck not? You're not my mom!"
+  title: "Condimentum et auctor turpis; integer etiam sollicitudin proin malesuada."
 ---
 
 # Heading 1

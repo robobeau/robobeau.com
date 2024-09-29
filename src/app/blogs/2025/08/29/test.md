@@ -1,7 +1,7 @@
 ---
   author: 'René Esteves'
   date: '2024/08/29'
-  title: 'Testing MDX'
+  title: 'Proin vehicula vestibulum lacus mattis odio scelerisque.'
 ---
 
 # Heading 1
