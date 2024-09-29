@@ -44,16 +44,16 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
               <div className="flex gap-1 items-center">
                 <Image
                   alt="folder"
-                  height={24}
+                  height={16}
                   priority
                   src={WINSE004}
-                  width={24}
+                  width={16}
                 />
 
                 <span>r:\</span>
               </div>
 
-              <ul className="ml-3">
+              <ul className="ml-2">
                 <li className={listItemClasses}>
                   <div className="flex gap-1 items-center">
                     <div className="self-stretch">
@@ -62,22 +62,22 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
 
                     <Image
                       alt="folder"
-                      height={24}
+                      height={16}
                       priority
                       src={MSMAI010}
-                      width={24}
+                      width={16}
                     />
 
                     <span>blogs</span>
                   </div>
 
-                  <ul className="ml-7">
+                  <ul className="ml-6">
                     {blogs.map((blog, index, array) => {
                       const { link, title } = blog;
 
                       const isCurrentPath = pathname === link;
                       const currentPathClass = isCurrentPath
-                        ? "bg-blue-800 border-2 border-dotted border-white text-white"
+                        ? "bg-blue-800 border border-dotted border-white text-white"
                         : "p-0.5";
                       const isLast = index === array.length - 1;
 
@@ -101,10 +101,10 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                             <Image
                               alt="folder"
                               className="shrink-0"
-                              height={24}
+                              height={16}
                               priority
                               src={OLE2001}
-                              width={24}
+                              width={16}
                             />
 
                             <span className="overflow-hidden text-ellipsis">
