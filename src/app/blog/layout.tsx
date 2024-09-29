@@ -29,14 +29,13 @@ const Layout: FC<PropsWithChildren> = async (props) => {
 
   return (
     <Program
-      // className="z-20"
       hasPadding={false}
       icon={programIcon.image}
+      initialSize={{ height: 480, width: 480 }}
       isScrollable={false}
       menu={blogMenu}
-      origin="tl"
       offset={{ x: 256, y: 64 }}
-      initialSize={{ height: 480, width: 480 }}
+      origin="tl"
       title="Blog"
     >
       <FileBrowser blogs={blogs} />

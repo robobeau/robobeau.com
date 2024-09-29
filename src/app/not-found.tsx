@@ -10,12 +10,12 @@ const NotFound: React.FC = () => {
 
   return (
     <Program
+      initialSize={{ height: 160, width: 192 }}
       isMaximizable={false}
       isMinimizable={false}
       minConstraints={[192, 160]}
       maxConstraints={[192, 160]}
       origin="m"
-      initialSize={{ height: 160, width: 192 }}
       title="404"
     >
       <div

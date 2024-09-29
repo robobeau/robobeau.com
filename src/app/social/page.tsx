@@ -64,11 +64,10 @@ const programIcons: Array<ProgramIconWithUrlProps> = [
 const Social: FC = () => {
   return (
     <Program
-      // className="z-20"
       icon={programIcon.image}
+      initialSize={{ height: 320, width: 240 }}
       offset={{ x: 352, y: 192 }}
       origin="tl"
-      initialSize={{ height: 320, width: 240 }}
       title={`${metadata.title}`}
     >
       <div className="flex flex-row flex-wrap gap-x-8 gap-y-4 items-end mt-auto">
