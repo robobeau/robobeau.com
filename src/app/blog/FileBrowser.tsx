@@ -28,7 +28,7 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
   const [isMaximized, setIsMaximized] = useState(false);
 
   const borderClasses = isChildrenEmpty ? "border-b border-black" : "";
-  const listItemClasses = "h-6 text-sm"
+  const listItemClasses = "h-6 text-sm";
 
   return (
     <MaximizedContext.Provider value={[isMaximized, setIsMaximized]}>
@@ -42,7 +42,13 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
           <ul className="h-full overflow-auto p-4">
             <li className={listItemClasses}>
               <div className="flex gap-1 items-center">
-                <Image alt="folder" height={24} src={WINSE004} width={24} />
+                <Image
+                  alt="folder"
+                  height={24}
+                  priority
+                  src={WINSE004}
+                  width={24}
+                />
 
                 <span>r:\</span>
               </div>
@@ -54,7 +60,13 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                       <div className="border-b-2 border-black border-l-2 h-1/2 justify-self-end self-start w-3"></div>
                     </div>
 
-                    <Image alt="folder" height={24} src={MSMAI010} width={24} />
+                    <Image
+                      alt="folder"
+                      height={24}
+                      priority
+                      src={MSMAI010}
+                      width={24}
+                    />
 
                     <span>blogs</span>
                   </div>
@@ -70,7 +82,10 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                       const isLast = index === array.length - 1;
 
                       return (
-                        <li className={`${listItemClasses} flex gap-1`} key={index}>
+                        <li
+                          className={`${listItemClasses} flex gap-1`}
+                          key={index}
+                        >
                           <div className="self-stretch">
                             <div className="border-b-2 border-black border-l-2 h-1/2 justify-self-end self-start w-3"></div>
 
@@ -87,6 +102,7 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                               alt="folder"
                               className="shrink-0"
                               height={24}
+                              priority
                               src={OLE2001}
                               width={24}
                             />

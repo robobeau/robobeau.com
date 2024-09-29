@@ -1,5 +1,3 @@
-// import Hourglass from "./src/images/Hourglass.png";
-import path from "path";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -12,10 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "tokimeki": "url('~/src/images/TokimekiBG.gif')"
+        tokimeki: "url('~/src/images/TokimekiBG.gif')",
       },
       colors: {
-        "title-bar": '#0000AA',
+        "title-bar": "#0000AA",
       },
       cursor: {
         wait: "url('~/src/images/Hourglass.gif'), wait",

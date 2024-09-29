@@ -38,7 +38,7 @@ const ProgramIcon: FC<ProgramIconProps> = (props) => {
 
   return (
     <span className={programIconClasses} onClick={onClick}>
-      <Image alt={`${label} Icon`} draggable={false} src={image} />
+      <Image alt={`${label} Icon`} draggable={false} priority src={image} />
 
       <span className={labelClasses}>{label}</span>
     </span>
