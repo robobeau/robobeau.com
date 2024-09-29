@@ -1,4 +1,4 @@
-import vt323 from "@/fonts/vt323";
+import w95fa from "@/fonts/w95fa";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     blockquote: ({ children }) => <blockquote>{children}</blockquote>,
     code: ({ children }) => (
-      <code className={`${vt323.className}`}>{children}</code>
+      <code className={`${w95fa.className}`}>{children}</code>
     ),
     h1: ({ children }) => <h1 className="mb-4 text-4xl">{children}</h1>,
     h2: ({ children }) => <h2 className="mb-3 text-3xl">{children}</h2>,
