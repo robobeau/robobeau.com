@@ -28,10 +28,9 @@ const RootLayout: React.FC<PropsWithChildren> = (props) => {
 
   return (
     <html lang="en">
-      <body className="bg-teal-700 bg-tokimeki flex flex-row gap-x-8 items-end mt-auto p-10">
+      <body className="bg-teal-700 bg-tokimeki flex flex-row gap-x-8 items-end mt-auto overflow-hidden p-10">
         <ZIndexProvider>
           <Program
-            // className="z-10"
             endSessionOnClose={true}
             initialSize={{ height: 240, width: 480 }}
             offset={{ x: 32, y: 128 }}
