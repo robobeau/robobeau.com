@@ -2,17 +2,15 @@ import MaximizedContext from "@/contexts/MaximizedContext";
 import MinimizedContext from "@/contexts/MinimizedContext";
 import PositionContext, { initialPosition } from "@/contexts/PositionContext";
 import ZIndexContext from "@/contexts/ZIndexContext";
-import MenuHotkeyEvent from "@/events/MenuHotkey";
-import debounce from "lodash.debounce";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import {
   FC,
-  KeyboardEvent,
   MouseEventHandler,
   PropsWithChildren,
-  useCallback,
   useContext,
+  useEffect,
+  useRef,
   useState,
 } from "react";
 import { ResizableProps } from "react-resizable";
@@ -34,33 +32,8 @@ interface WindowProps
   menu?: Array<MenuItem>;
   onClose?: () => void;
   title: string;
+  zIndexOffset?: number;
 }
-
-interface MinimizedWindowProps extends Pick<WindowProps, "icon" | "title"> {}
-
-const MinimizedWindow: FC<MinimizedWindowProps> = (props) => {
-  const { icon, title } = props;
-
-  const [isMinimized, setIsMinimized] = useContext(MinimizedContext);
-
-  const onClickHandler: MouseEventHandler<HTMLAnchorElement> = (event) => {
-    event.preventDefault();
-
-    if (event.detail === 2) {
-      setIsMinimized(false);
-    }
-  };
-
-  return (
-    <ProgramIcon
-      className={HANDLE_CLASS}
-      image={icon}
-      isMinimized={true}
-      label={title}
-      onClick={onClickHandler}
-    />
-  );
-};
 
 const Window: FC<WindowProps> = (props) => {
   const {
@@ -77,14 +50,17 @@ const Window: FC<WindowProps> = (props) => {
     minConstraints,
     // onClose,
     title,
+    zIndexOffset = 0,
   } = props;
 
   const [isMaximized, setIsMaximized] = useContext(MaximizedContext);
   const [isMinimized, setIsMinimized] = useContext(MinimizedContext);
   const [globalZIndex, setGlobalZIndex] = useContext(ZIndexContext);
+  const windowRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [position, setPosition] = useState(initialPosition);
   const [zIndex, setZIndex] = useState(globalZIndex);
+  const isFocused = zIndex === globalZIndex;
 
   const onCloseHandler = () => {
     if (endSessionOnClose) {
@@ -108,27 +84,23 @@ const Window: FC<WindowProps> = (props) => {
     router.back();
   };
 
-  const onKeyDownHandler = useCallback(
-    debounce(
-      (event: KeyboardEvent) => {
-        if (event.altKey) {
-          const menuHotkeyEvent = new MenuHotkeyEvent(event.key);
-
-          document.dispatchEvent(menuHotkeyEvent);
-        }
-      },
-      100,
-      { leading: true, trailing: false }
-    ),
-    []
-  );
-
   const updateZIndex = () => {
-    const newIndex = globalZIndex + 1;
+    const newIndex = globalZIndex + 1 + zIndexOffset;
 
     setGlobalZIndex(newIndex);
     setZIndex(newIndex);
   };
+
+  const restoreWindow: MouseEventHandler = (event) => {
+    event.preventDefault();
+
+    if (event.detail === 2) {
+      setIsMinimized(false);
+      updateZIndex();
+    }
+  };
+
+  useEffect(updateZIndex, []);
 
   // #region Classes
   const childrenClasses = `
@@ -140,7 +112,6 @@ const Window: FC<WindowProps> = (props) => {
     absolute self-start
     ${isMaximized ? "inset-0" : ""}
     ${className}
-
   `.trim();
   const minimizedDraggableClasses = `
     absolute
@@ -158,7 +129,13 @@ const Window: FC<WindowProps> = (props) => {
       <PositionContext.Provider value={[position, setPosition]}>
         <span className="flex h-24 justify-center w-24">
           <Draggable className={minimizedDraggableClasses}>
-            <MinimizedWindow icon={icon} title={title} />
+            <ProgramIcon
+              className={HANDLE_CLASS}
+              image={icon}
+              isMinimized={true}
+              label={title}
+              onClick={restoreWindow}
+            />
           </Draggable>
         </span>
       </PositionContext.Provider>
@@ -178,17 +155,18 @@ const Window: FC<WindowProps> = (props) => {
             <div
               className={windowClasses}
               onMouseDown={updateZIndex}
-              onKeyDown={onKeyDownHandler}
+              ref={windowRef}
             >
               <div className="bg-white flex flex-col grow overflow-hidden">
                 <TitleBar
+                  isFocused={isFocused}
                   isMaximizable={isMaximizable}
                   isMinimizable={isMinimizable}
                   onClose={onCloseHandler}
                   title={title}
                 />
 
-                {menu && <Menu menu={menu} />}
+                {menu && <Menu menu={menu} ref={windowRef} />}
 
                 <div className={childrenClasses}>{children}</div>
               </div>
