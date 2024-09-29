@@ -38,6 +38,7 @@ const Draggable: React.FC<DraggableProps> = (props) => {
 
   return (
     <_Draggable
+      bounds="html"
       cancel="a, button"
       defaultClassName={className}
       disabled={isMaximized}
