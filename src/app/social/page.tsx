@@ -72,7 +72,7 @@ const Social: FC = () => {
     >
       <div className="flex flex-row flex-wrap gap-x-8 gap-y-4 items-end mt-auto">
         {programIcons.map(({ target, url, ...programIconProps }, index) => (
-          <Link href={url} key={index} target={target}>
+          <Link className="shrink-0" href={url} key={index} target={target}>
             <ProgramIcon {...programIconProps} />
           </Link>
         ))}

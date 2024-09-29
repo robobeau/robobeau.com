@@ -26,7 +26,7 @@ const ProgramIcon: FC<ProgramIconProps> = (props) => {
   } = props;
 
   const programIconClasses = `
-    group/link flex flex-col gap-1 items-center outline-none shrink-0
+    group/link flex flex-col gap-1 items-center outline-none
     ${className}
   `.trim();
   const labelClasses = `
