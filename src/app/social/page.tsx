@@ -66,7 +66,7 @@ const Social: FC = () => {
     <Program
       icon={programIcon.image}
       initialSize={{ height: 320, width: 240 }}
-      offset={{ x: 352, y: 192 }}
+      offset={{ x: 325, y: 100 }}
       origin="tl"
       title={`${metadata.title}`}
     >

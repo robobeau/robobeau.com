@@ -33,7 +33,7 @@ const RootLayout: React.FC<PropsWithChildren> = (props) => {
           <Program
             endSessionOnClose={true}
             initialSize={{ height: 240, width: 480 }}
-            offset={{ x: 32, y: 128 }}
+            offset={{ x: 0, y: 50 }}
             origin="tl"
             title="robobeau.exe"
           >

@@ -31,10 +31,10 @@ const Layout: FC<PropsWithChildren> = async (props) => {
     <Program
       hasPadding={false}
       icon={programIcon.image}
-      initialSize={{ height: 480, width: 480 }}
+      initialSize={{ height: 475, width: 475 }}
       isScrollable={false}
       menu={blogMenu}
-      offset={{ x: 256, y: 64 }}
+      offset={{ x: 325, y: 0 }}
       origin="tl"
       title="Blog"
     >
