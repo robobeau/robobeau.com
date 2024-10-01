@@ -14,7 +14,7 @@ interface MenuProps {
   menu: Array<MenuItem>;
 }
 
-const Menu = forwardRef<HTMLElement, MenuProps>((props, ref) => {
+const Menu = forwardRef<HTMLElement, MenuProps>(function Menu(props, ref) {
   const { menu } = props;
 
   useMenuHotkey(menu, ref);

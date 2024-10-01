@@ -100,7 +100,7 @@ const Window: FC<WindowProps> = (props) => {
     }
   };
 
-  useEffect(updateZIndex, []);
+  useEffect(updateZIndex, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // #region Classes
   const childrenClasses = `
