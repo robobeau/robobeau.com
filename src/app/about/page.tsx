@@ -9,6 +9,7 @@ import ProgramIcon, {
 import { MY_NAME } from "@/constants";
 import PROGM013 from "@/images/PROGM013.png";
 import PROGM024 from "@/images/PROGM024.png";
+import MSMAI010 from "@/images/MSMAI010.png";
 import ReneMoshed from "@/images/ReneMoshed.gif";
 import SYSED002 from "@/images/SYSED002.png";
 import Page from "@/types/page";
@@ -42,7 +43,7 @@ const About: FC<Page> = () => {
       </Program>
 
       <Program
-        icon={SYSED002}
+        icon={MSMAI010}
         initialSize={{ height: 160, width: 240 }}
         offset={{ x: 700, y: 50 }}
         origin="tl"
