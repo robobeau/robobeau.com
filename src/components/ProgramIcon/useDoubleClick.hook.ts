@@ -9,10 +9,10 @@ const useDoubleClick = (ref: RefObject<HTMLElement>, callback?: () => void, ) =>
     );
 
   const desktopEffect: EffectCallback = () => {
-    ref.current?.addEventListener("dblclick", callback);
+    callback && ref.current?.addEventListener("dblclick", callback);
 
     return () => {
-      ref.current?.removeEventListener("dblclick", callback);
+      callback && ref.current?.removeEventListener("dblclick", callback);
     };
   };
 
@@ -48,7 +48,7 @@ const useDoubleClick = (ref: RefObject<HTMLElement>, callback?: () => void, ) =>
 
   const effect = isMobile ? mobileEffect : desktopEffect;
 
-  useEffect(effect, [callback, ref]);
+  useEffect(effect, [effect]);
 };
 
 export { useDoubleClick as default };
