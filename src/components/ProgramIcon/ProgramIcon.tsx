@@ -32,7 +32,7 @@ const ProgramIcon: FC<ProgramIconProps> = (props) => {
   const ref = useRef<HTMLSpanElement>(null);
   const role = onDoubleClick ? "button" : undefined;
 
-  onDoubleClick && useDoubleClick(onDoubleClick, ref);
+  useDoubleClick(ref, onDoubleClick);
 
   const programIconClasses = `
     group/link flex flex-col gap-1 items-center outline-none

@@ -2,7 +2,7 @@
 
 import { EffectCallback, RefObject, useEffect } from "react";
 
-const useDoubleClick = (callback: () => void, ref: RefObject<HTMLElement>) => {
+const useDoubleClick = (ref: RefObject<HTMLElement>, callback?: () => void, ) => {
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
@@ -33,7 +33,7 @@ const useDoubleClick = (callback: () => void, ref: RefObject<HTMLElement>) => {
       if (timesTapped > 1 && delta < 1000) {
         timesTapped = 0
 
-        callback();
+        callback?.();
       }
     };
 
