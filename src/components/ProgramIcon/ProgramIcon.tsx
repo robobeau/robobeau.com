@@ -1,14 +1,18 @@
+"use client";
+
 import w95fa from "@/fonts/w95fa";
 import PROGM001 from "@/images/PROGM001.png";
 import Image, { StaticImageData } from "next/image";
-import { FC, HTMLAttributeAnchorTarget, MouseEventHandler } from "react";
+import { FC, HTMLAttributeAnchorTarget, useRef } from "react";
+
+import useDoubleClick from "./useDoubleClick.hook";
 
 interface ProgramIconProps {
   className?: string;
   image?: StaticImageData;
   isMinimized?: boolean;
   label: string;
-  onClick?: MouseEventHandler<HTMLElement>;
+  onDoubleClick?: () => void;
 }
 
 interface ProgramIconWithUrlProps extends ProgramIconProps {
@@ -22,8 +26,13 @@ const ProgramIcon: FC<ProgramIconProps> = (props) => {
     image = PROGM001,
     isMinimized = false,
     label,
-    onClick,
+    onDoubleClick,
   } = props;
+
+  const ref = useRef<HTMLSpanElement>(null);
+  const role = onDoubleClick ? "button" : undefined;
+
+  onDoubleClick && useDoubleClick(onDoubleClick, ref);
 
   const programIconClasses = `
     group/link flex flex-col gap-1 items-center outline-none
@@ -37,7 +46,7 @@ const ProgramIcon: FC<ProgramIconProps> = (props) => {
   `.trim();
 
   return (
-    <span className={programIconClasses} onClick={onClick}>
+    <span className={programIconClasses} ref={ref} role={role}>
       <Image alt={`${label} Icon`} draggable={false} priority src={image} />
 
       <span className={labelClasses}>{label}</span>

@@ -41,7 +41,7 @@ const Button: FC<ButtonProps> = (props) => {
   `.trim();
   const textWrapperClasses = `
     border-2 border-b-slate-400 border-l-white border-r-slate-400 border-t-white flex grow h-full items-center justify-center w-full
-    group-active/button:border-b-slate-200 group-active/button:border-l-slate-400 group-active/button:border-r-slate-200 group-active/button:border-t-slate-400
+    group-active/button:border-b-slate-200 group-active/button:border-l-slate-400 group-active/button:border-r-slate-200 group-active/button:border-t-slate-400 group-active/button:shadow-inner
   `.trim();
   // #endregion
 

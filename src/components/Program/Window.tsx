@@ -91,13 +91,9 @@ const Window: FC<WindowProps> = (props) => {
     setZIndex(newIndex);
   };
 
-  const restoreWindow: MouseEventHandler = (event) => {
-    event.preventDefault();
-
-    if (event.detail === 2) {
-      setIsMinimized(false);
-      updateZIndex();
-    }
+  const restoreWindow = () => {
+    setIsMinimized(false);
+    updateZIndex();
   };
 
   useEffect(updateZIndex, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -109,7 +105,7 @@ const Window: FC<WindowProps> = (props) => {
     ${hasPadding ? "p-4" : ""}
   `.trim();
   const draggableClasses = `
-    absolute self-start
+    absolute self-start shadow-md
     ${isMaximized ? "inset-0" : ""}
     ${className}
   `.trim();
@@ -134,7 +130,7 @@ const Window: FC<WindowProps> = (props) => {
               image={icon}
               isMinimized={true}
               label={title}
-              onClick={restoreWindow}
+              onDoubleClick={restoreWindow}
             />
           </Draggable>
         </span>
