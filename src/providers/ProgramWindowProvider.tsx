@@ -1,5 +1,7 @@
-import MaximizedContext, { initialIsMaximized } from "@/contexts/MaximizedContext";
-import MinimizedContext, { initialIsMinimized } from "@/contexts/MinimizedContext";
+"use client";
+
+import MaximizedContext from "@/contexts/MaximizedContext";
+import MinimizedContext from "@/contexts/MinimizedContext";
 import PositionContext, { Position } from "@/contexts/PositionContext";
 import PrevPositionContext from "@/contexts/PrevPositionContext";
 import PrevSizeContext from "@/contexts/PrevSizeContext";
@@ -7,6 +9,8 @@ import SizeContext, { Size } from "@/contexts/SizeContext";
 import { FC, PropsWithChildren, useState } from "react";
 
 interface ProgramWindowProviderProps {
+  initialIsMaximized: boolean;
+  initialIsMinimized: boolean;
   initialPosition: Position;
   initialSize: Size;
 }
@@ -14,7 +18,13 @@ interface ProgramWindowProviderProps {
 const ProgramWindowProvider: FC<
   PropsWithChildren<ProgramWindowProviderProps>
 > = (props) => {
-  const { children, initialPosition, initialSize } = props;
+  const {
+    children,
+    initialIsMaximized,
+    initialIsMinimized,
+    initialPosition,
+    initialSize,
+  } = props;
 
   const [isMaximized, setIsMaximized] = useState(initialIsMaximized);
   const [isMinimized, setIsMinimized] = useState(initialIsMinimized);
@@ -40,5 +50,4 @@ const ProgramWindowProvider: FC<
   );
 };
 
-export { ProgramWindowProvider };
-
+export { ProgramWindowProvider, type ProgramWindowProviderProps };

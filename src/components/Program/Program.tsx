@@ -1,20 +1,26 @@
 "use client";
 
 import { HANDLE_CLASS } from "@/constants";
-import MinimizedContext from "@/contexts/MinimizedContext";
+import { initialIsMaximized as _initialIsMaximized } from "@/contexts/MaximizedContext";
+import { initialIsMinimized as _initialIsMinimized } from "@/contexts/MinimizedContext";
 import {
   initialPosition as _initialPosition,
   Position,
 } from "@/contexts/PositionContext";
-import { initialSize as _initialSize, Size } from "@/contexts/SizeContext";
-import { ProgramWindowProvider } from "@/providers/ProgramWindowProvider";
-import { FC, PropsWithChildren, useContext, useEffect, useState } from "react";
+import { initialSize as _initialSize } from "@/contexts/SizeContext";
+import {
+  ProgramWindowProvider,
+  ProgramWindowProviderProps,
+} from "@/providers/ProgramWindowProvider";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 import Window, { WindowProps } from "./Window";
 
 type Origin = "tl" | "t" | "tr" | "l" | "m" | "r" | "bl" | "b" | "br";
 
-interface ProgramProps extends PropsWithChildren, WindowProps {
-  initialSize?: Size;
+interface ProgramProps
+  extends PropsWithChildren,
+    WindowProps,
+    Partial<ProgramWindowProviderProps> {
   offset?: Position;
   origin?: Origin;
 }
@@ -98,6 +104,8 @@ function getViewport() {
 
 const Program: FC<ProgramProps> = (props) => {
   const {
+    initialIsMaximized = _initialIsMaximized,
+    initialIsMinimized = _initialIsMinimized,
     initialSize = _initialSize,
     offset = _initialPosition,
     origin = "tl",
@@ -119,7 +127,12 @@ const Program: FC<ProgramProps> = (props) => {
   }
 
   return (
-    <ProgramWindowProvider initialPosition={position} initialSize={initialSize}>
+    <ProgramWindowProvider
+      initialIsMaximized={initialIsMaximized}
+      initialIsMinimized={initialIsMinimized}
+      initialPosition={position}
+      initialSize={initialSize}
+    >
       <Window {...props} />
     </ProgramWindowProvider>
   );
