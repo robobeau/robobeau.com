@@ -5,8 +5,8 @@ const metadata: Metadata = {
   title: "Blog",
 };
 
-const Blog: FC = () => {
+const BlogPage: FC = () => {
   return null;
 };
 
-export { Blog as default, metadata };
+export { BlogPage as default, metadata };
