@@ -3,7 +3,7 @@
 import { HANDLE_CLASS } from "@/constants";
 import MaximizedContext from "@/contexts/MaximizedContext";
 import PositionContext from "@/contexts/PositionContext";
-import { PropsWithChildren, useContext, useRef } from "react";
+import { FC, PropsWithChildren, useContext, useRef } from "react";
 import _Draggable, { DraggableEventHandler } from "react-draggable";
 
 interface DraggableProps extends PropsWithChildren {
@@ -12,7 +12,7 @@ interface DraggableProps extends PropsWithChildren {
   style?: React.CSSProperties;
 }
 
-const Draggable: React.FC<DraggableProps> = (props) => {
+const Draggable: FC<DraggableProps> = (props) => {
   const { className, children, onStart, style } = props;
 
   const [position, setPosition] = useContext(PositionContext);
