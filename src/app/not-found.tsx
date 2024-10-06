@@ -1,32 +1,14 @@
 "use client";
 
-import Button from "@/components/Button/Button";
-import Program from "@/components/Program/Program";
-import w95fa from "@/fonts/w95fa";
 import { useRouter } from "next/navigation";
+import { FC } from "react";
 
-const NotFound: React.FC = () => {
+import _NotFound from "@/components/NotFound/NotFound";
+
+const NotFound: FC = () => {
   const router = useRouter();
 
-  return (
-    <Program
-      initialSize={{ height: 160, width: 192 }}
-      isMaximizable={false}
-      isMinimizable={false}
-      minConstraints={[192, 160]}
-      maxConstraints={[192, 160]}
-      origin="m"
-      title="404"
-    >
-      <div
-        className={`flex flex-col gap-2 h-full justify-center items-center text-xl ${w95fa.className}`}
-      >
-        <span>Not Found</span>
-
-        <Button onClick={router.back}>OK</Button>
-      </div>
-    </Program>
-  );
+  return <_NotFound onConfirm={router.back} />;
 };
 
 export { NotFound as default };
