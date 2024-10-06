@@ -33,6 +33,7 @@ const BlogProgram: FC<PropsWithChildren> = async (props) => {
       offset={{ x: 325, y: 0 }}
       origin="tl"
       title="Blog"
+      zIndexOffset={1}
     >
       <FileBrowser blogs={blogs} />
 
