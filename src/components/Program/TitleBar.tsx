@@ -1,14 +1,15 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { FC, useContext } from "react";
+
+import Button from "@/components/Button/Button";
 import { HANDLE_CLASS } from "@/constants";
 import MaximizedContext from "@/contexts/MaximizedContext";
 import MinimizedContext from "@/contexts/MinimizedContext";
 import PositionContext from "@/contexts/PositionContext";
 import PrevPositionContext from "@/contexts/PrevPositionContext";
 import w95fa from "@/fonts/w95fa";
-import { useRouter } from "next/navigation";
-import { FC, useContext } from "react";
-import Button from "../Button/Button";
 
 interface TitleBarProps {
   isFocused?: boolean;
@@ -50,7 +51,7 @@ const RestoreIcon: FC = () => {
   );
 };
 
-const TitleBar: React.FC<TitleBarProps> = (props) => {
+const TitleBar: FC<TitleBarProps> = (props) => {
   const {
     isFocused = false,
     isMaximizable = true,

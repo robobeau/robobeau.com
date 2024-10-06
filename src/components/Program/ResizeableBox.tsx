@@ -2,7 +2,7 @@
 
 import MaximizedContext from "@/contexts/MaximizedContext";
 import PositionContext from "@/contexts/PositionContext";
-import { PropsWithChildren, useContext } from "react";
+import { FC, PropsWithChildren, useContext } from "react";
 import { ResizableBox as _ResizableBox, ResizableProps } from "react-resizable";
 import SizeContext from "../../contexts/SizeContext";
 
@@ -21,10 +21,14 @@ interface ResizableBoxProps
   extends PropsWithChildren,
     Pick<
       ResizableProps,
-      "className" | "maxConstraints" | "minConstraints" | "resizeHandles" | "onResizeStart"
+      | "className"
+      | "maxConstraints"
+      | "minConstraints"
+      | "resizeHandles"
+      | "onResizeStart"
     > {}
 
-const ResizableBox: React.FC<ResizableBoxProps> = (props) => {
+const ResizableBox: FC<ResizableBoxProps> = (props) => {
   const {
     className,
     children,
