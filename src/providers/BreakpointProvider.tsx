@@ -1,7 +1,7 @@
 "use client";
 
 import BreakpointContext from "@/contexts/BreakpointContext";
-import useBreakpoint from "@/hooks/useBreakpoint";
+import useBreakpoint from "@/hooks/useBreakpoint.hook";
 import { FC, PropsWithChildren } from "react";
 
 const BreakpointProvider: FC<PropsWithChildren> = ({ children }) => {

@@ -1,18 +1,16 @@
 import debounce from "lodash.debounce";
-import { Ref, useEffect, useMemo } from "react";
-import { MenuItem } from "./Menu";
+import { useEffect, useMemo } from "react";
 
-function useMenuHotkey(menu: Array<MenuItem>, ref: Ref<HTMLElement>) {
+import { MenuItem } from "@/components/Program/Menu";
+
+function useMenuHotkey(menu: Array<MenuItem>, isFocused: boolean) {
   const menuHotkeyHandler = useMemo(
     () =>
       debounce(
         (event: KeyboardEvent) => {
           const { altKey, key } = event;
 
-          if (
-            typeof ref !== "object" ||
-            !ref?.current?.contains(document.activeElement)
-          ) {
+          if (!isFocused) {
             return false;
           }
 
@@ -30,7 +28,7 @@ function useMenuHotkey(menu: Array<MenuItem>, ref: Ref<HTMLElement>) {
         100,
         { leading: true, trailing: false }
       ),
-    [menu, ref]
+    [isFocused, menu]
   );
 
   useEffect(() => {

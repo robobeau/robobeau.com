@@ -4,15 +4,7 @@ import PositionContext, { initialPosition } from "@/contexts/PositionContext";
 import ZIndexContext from "@/contexts/ZIndexContext";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import {
-  FC,
-  MouseEventHandler,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, PropsWithChildren, useContext, useEffect, useState } from "react";
 import { ResizableProps } from "react-resizable";
 import ProgramIcon from "../ProgramIcon/ProgramIcon";
 import Draggable, { HANDLE_CLASS } from "./Draggable";
@@ -56,7 +48,6 @@ const Window: FC<WindowProps> = (props) => {
   const [isMaximized, setIsMaximized] = useContext(MaximizedContext);
   const [isMinimized, setIsMinimized] = useContext(MinimizedContext);
   const [globalZIndex, setGlobalZIndex] = useContext(ZIndexContext);
-  const windowRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [position, setPosition] = useState(initialPosition);
   const [zIndex, setZIndex] = useState(globalZIndex);
@@ -148,11 +139,7 @@ const Window: FC<WindowProps> = (props) => {
             maxConstraints={maxConstraints}
             onResizeStart={updateZIndex}
           >
-            <div
-              className={windowClasses}
-              onMouseDown={updateZIndex}
-              ref={windowRef}
-            >
+            <div className={windowClasses} onMouseDown={updateZIndex}>
               <div className="bg-white flex flex-col grow overflow-hidden">
                 <TitleBar
                   isFocused={isFocused}
@@ -162,7 +149,7 @@ const Window: FC<WindowProps> = (props) => {
                   title={title}
                 />
 
-                {menu && <Menu menu={menu} ref={windowRef} />}
+                {menu && <Menu isFocused={isFocused} menu={menu} />}
 
                 <div className={childrenClasses}>{children}</div>
               </div>

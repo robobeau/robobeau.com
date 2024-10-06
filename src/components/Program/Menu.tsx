@@ -1,7 +1,7 @@
 import w95fa from "@/fonts/w95fa";
 import Link from "next/link";
-import { forwardRef, HTMLAttributeAnchorTarget } from "react";
-import useMenuHotkey from "./useMenuHotkey.hook";
+import { FC, HTMLAttributeAnchorTarget } from "react";
+import useMenuHotkey from "../../hooks/useMenuHotkey.hook";
 
 interface MenuItem {
   label: string;
@@ -11,13 +11,14 @@ interface MenuItem {
 }
 
 interface MenuProps {
+  isFocused?: boolean;
   menu: Array<MenuItem>;
 }
 
-const Menu = forwardRef<HTMLElement, MenuProps>(function Menu(props, ref) {
-  const { menu } = props;
+const Menu: FC<MenuProps> = (props) => {
+  const { isFocused = false, menu } = props;
 
-  useMenuHotkey(menu, ref);
+  useMenuHotkey(menu, isFocused);
 
   const linkClasses = `
     font-bold outline-none px-2
@@ -41,6 +42,6 @@ const Menu = forwardRef<HTMLElement, MenuProps>(function Menu(props, ref) {
       })}
     </div>
   );
-});
+};
 
 export { Menu as default, type MenuItem };
