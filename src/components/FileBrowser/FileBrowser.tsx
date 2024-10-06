@@ -49,6 +49,7 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                   height={16}
                   priority
                   src={WINSE004}
+                  unoptimized
                   width={16}
                 />
 
@@ -67,6 +68,7 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                       height={16}
                       priority
                       src={MSMAI010}
+                      unoptimized
                       width={16}
                     />
 
@@ -106,6 +108,7 @@ const FileBrowser: FC<FileBrowserProps> = (props) => {
                               height={16}
                               priority
                               src={OLE2001}
+                              unoptimized
                               width={16}
                             />
 

@@ -47,7 +47,13 @@ const ProgramIcon: FC<ProgramIconProps> = (props) => {
 
   return (
     <span className={programIconClasses} ref={ref} role={role}>
-      <Image alt={`${label} Icon`} draggable={false} priority src={image} />
+      <Image
+        alt={`${label} Icon`}
+        draggable={false}
+        priority
+        src={image}
+        unoptimized
+      />
 
       <span className={labelClasses}>{label}</span>
     </span>
