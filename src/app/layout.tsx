@@ -1,8 +1,7 @@
 import { Metadata } from "next";
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, ReactNode } from "react";
 
 import "@/app/globals.css";
-import MainProgram from "@/components/MainProgram/MainProgram";
 import { MY_HANDLE, MY_NAME } from "@/constants";
 import BreakpointProvider from "@/providers/BreakpointProvider";
 import ZIndexProvider from "@/providers/ZIndexProvider";
@@ -12,16 +11,19 @@ const metadata: Metadata = {
   title: `${MY_HANDLE}.exe`,
 };
 
-const RootLayout: FC<PropsWithChildren> = (props) => {
-  const { children } = props;
+interface RootLayoutProps {
+  main: ReactNode;
+}
+
+const RootLayout: FC<PropsWithChildren<RootLayoutProps>> = (props) => {
+  const { children, main } = props;
 
   return (
     <html lang="en">
-      <body className="bg-teal-700 bg-tokimeki flex flex-row gap-x-8 items-end mt-auto overflow-hidden p-10">
+      <body className="bg-teal-700 bg-tokimeki flex flex-row gap-x-2 items-end mt-auto overflow-hidden p-10">
         <BreakpointProvider>
           <ZIndexProvider>
-            <MainProgram />
-
+            {main}
             {children}
           </ZIndexProvider>
         </BreakpointProvider>

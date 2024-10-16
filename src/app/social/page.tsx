@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { default as SocialPage } from "@/components/SocialProgram/SocialProgram";
+import SocialPage from "@/components/SocialProgram/SocialProgram";
 
 const metadata: Metadata = {
   title: "Social",

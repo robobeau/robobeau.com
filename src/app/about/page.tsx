@@ -1,20 +1,8 @@
-import { FC } from "react";
-
 import AboutProgram from "@/components/AboutProgram/AboutProgram";
-import DocumentsProgram from "@/components/DocumentsProgram/DocumentsProgram";
-import ReneImageProgram from "@/components/ReneImageProgram/ReneImageProgram";
-import Page from "@/types/page";
+import { Metadata } from "next";
 
-const AboutPage: FC<Page> = () => {
-  return (
-    <>
-      <ReneImageProgram />
-
-      <DocumentsProgram />
-
-      <AboutProgram />
-    </>
-  );
+const metadata: Metadata = {
+  title: "About Me",
 };
 
-export { AboutPage as default };
+export { AboutProgram as default, metadata };
