@@ -10,6 +10,9 @@ import MinimizedContext from "@/contexts/MinimizedContext";
 import PositionContext from "@/contexts/PositionContext";
 import PrevPositionContext from "@/contexts/PrevPositionContext";
 import w95fa from "@/fonts/w95fa";
+import classNames from "@/utils/classNames.util";
+
+import "./title-bar.css";
 
 interface TitleBarProps {
   isFocused?: boolean;
@@ -19,34 +22,38 @@ interface TitleBarProps {
   title: string;
 }
 
-const commonIconClasses =
-  "block border-solid border-x-transparent border-x-[6px] h-0 relative w-0";
-
 const MaximizeIcon: FC = () => {
-  return (
-    <span
-      className={`${commonIconClasses} border-b-black border-b-[6px] top-[-1px]`}
-    ></span>
+  const className = classNames(
+    "icon",
+    "border-b-black border-b-[6px] top-[-1px]"
   );
+
+  return <span className={className}></span>;
 };
 
 const MinimizeIcon: FC = () => {
-  return (
-    <span
-      className={`${commonIconClasses} border-t-black border-t-[6px] top-[1px]`}
-    ></span>
+  const className = classNames(
+    "icon",
+    "border-t-black border-t-[6px] top-[1px]"
   );
+
+  return <span className={className}></span>;
 };
 
 const RestoreIcon: FC = () => {
+  const upArrowClassName = classNames(
+    "icon",
+    "border-b-black border-b-[6px] top-[-1px]"
+  );
+  const downArrowClassName = classNames(
+    "icon",
+    "border-t-black border-t-[6px] top-[1px]"
+  );
+
   return (
     <>
-      <span
-        className={`${commonIconClasses} border-b-black border-b-[6px] top-[-1px]`}
-      ></span>
-      <span
-        className={`${commonIconClasses} border-t-black border-t-[6px] top-[1px]`}
-      ></span>
+      <span className={upArrowClassName}></span>
+      <span className={downArrowClassName}></span>
     </>
   );
 };
@@ -83,38 +90,29 @@ const TitleBar: FC<TitleBarProps> = (props) => {
   };
 
   // #region Classes
-  const closeButtonClasses = `
-    group/button
-    absolute bg-slate-300 border-black border-r bottom-0 cursor-pointer flex items-center justify-center left-0 outline-none text-white top-0 w-7 z-10
-    focus:bg-slate-400 focus:text-black
-  `.trim();
-  const closeButtonIconClasses = `
-    bg-white border-black border h-1 shadow-sm shadow-slate-800 w-1/2
-    group-focus/button:bg-black group-focus/button:border-white group-focus/button:shadow-white
-  `.trim();
   const minMaxButtonClasses = "ml-[-1px] w-7";
-  const titleBarClasses = `
-    ${isFocused ? "bg-title-bar text-white" : "bg-white text-black"}
-    border-black border-b flex items-stretch h-7 relative shrink-0
-    ${w95fa.className}
-  `.trim();
-  const titleClasses = `
-    ${HANDLE_CLASS}
-    content-center font-bold grow select-none text-center
-  `.trim();
+  const titleBarClassNames = classNames(
+    "title-bar",
+    isFocused && "title-bar--focused",
+    w95fa.className
+  );
+  const titleClassNames = classNames(
+    HANDLE_CLASS,
+    "content-center font-bold grow select-none text-center"
+  );
   // #endregion
 
   return (
-    <div className={titleBarClasses}>
+    <div className={titleBarClassNames}>
       <button
-        className={closeButtonClasses}
+        className="close-button"
         onClick={onClose ?? router.back}
         title="Go Back"
       >
-        <span className={closeButtonIconClasses}></span>
+        <span className="close-button-icon"></span>
       </button>
 
-      <span className={titleClasses}>{title}</span>
+      <span className={titleClassNames}>{title}</span>
 
       {(isMaximizable || isMinimizable) && (
         <span className="absolute bottom-[-1px] flex gap-[-1px] right-[-1px] top-[-1px] z-10">
