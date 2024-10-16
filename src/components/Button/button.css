@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* #region Button */
+  .button {
+    @apply bg-gray-200 border border-black leading-4
+  }
+
+  .button--with-outline {
+    @apply focus-within:outline focus-within:outline-1 focus-within:outline-black
+  }
+
+  .button--with-rounded-corners {
+    @apply rounded-sm
+  }
+  /* #endregion */
+
+  /* #region Text Wrapper */
+  .button--text-wrapper {
+    @apply border-2 border-b-gray-400 border-l-white border-r-gray-400 border-t-white flex grow h-full items-center justify-center w-full
+  }
+
+  .button--text-wrapper:active {
+    @apply border-b-gray-200 border-l-gray-400 border-r-gray-200 border-t-gray-400 shadow-inner
+  }
+  /* #endregion */
+
+  /* #region Text */
+  .button--text {
+    @apply px-1 relative rounded-sm
+  }
+
+  .button--text:active {
+    @apply left-0.5 top-0.5
+  }
+
+  .button--text-with-outline:active {
+    @apply outline outline-1 outline-dotted outline-gray-400
+  }
+
+  .button--text-with-outline:focus-within {
+    @apply outline outline-1 outline-dotted outline-gray-400
+  }
+  /* #endregion */
+}
