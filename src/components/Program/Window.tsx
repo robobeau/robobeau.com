@@ -2,6 +2,7 @@ import MaximizedContext from "@/contexts/MaximizedContext";
 import MinimizedContext from "@/contexts/MinimizedContext";
 import PositionContext, { initialPosition } from "@/contexts/PositionContext";
 import ZIndexContext from "@/contexts/ZIndexContext";
+import classNames from "@/utils/classNames.util";
 import { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, PropsWithChildren, useContext, useEffect, useState } from "react";
@@ -90,32 +91,32 @@ const Window: FC<WindowProps> = (props) => {
   useEffect(updateZIndex, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // #region Classes
-  const childrenClasses = `
-    flex flex-col h-full w-full
-    ${isScrollable ? "overflow-auto" : ""}
-    ${hasPadding ? "p-4" : ""}
-  `.trim();
-  const draggableClasses = `
-    absolute self-start shadow-md
-    ${isMaximized ? "inset-0" : ""}
-    ${className}
-  `.trim();
-  const minimizedDraggableClasses = `
-    absolute
-    ${!isMinimized ? "hidden" : ""}
-  `.trim();
-  const resizableBoxClasses = isMaximized ? "!size-full" : "";
-  const windowClasses = `
-    bg-slate-300 flex h-full w-full
-    ${!isMaximized ? "border-4 border-black border-double" : ""}
-  `.trim();
+  const childrenClassNames = classNames(
+    "flex flex-col h-full w-full",
+    hasPadding && "p-4",
+    isScrollable && "overflow-auto"
+  );
+  const draggableClassNames = classNames(
+    "absolute self-start shadow-md",
+    isMaximized && "inset-0",
+    className
+  );
+  const minimizedDraggableClassNames = classNames(
+    "absolute",
+    !isMinimized && "hidden"
+  );
+  const resizableBoxClassNames = classNames(isMaximized && "!size-full");
+  const windowClassNames = classNames(
+    "bg-gray-300 flex h-full w-full",
+    !isMaximized && "border-4 border-black border-double"
+  );
   // #endregion
 
   return (
     <>
       <PositionContext.Provider value={[position, setPosition]}>
         <span className="flex h-24 justify-center w-24">
-          <Draggable className={minimizedDraggableClasses}>
+          <Draggable className={minimizedDraggableClassNames}>
             <ProgramIcon
               className={HANDLE_CLASS}
               image={icon}
@@ -129,17 +130,17 @@ const Window: FC<WindowProps> = (props) => {
 
       {!isMinimized && (
         <Draggable
-          className={draggableClasses}
+          className={draggableClassNames}
           onStart={updateZIndex}
           style={{ zIndex: zIndex }}
         >
           <ResizableBox
-            className={resizableBoxClasses}
+            className={resizableBoxClassNames}
             minConstraints={minConstraints}
             maxConstraints={maxConstraints}
             onResizeStart={updateZIndex}
           >
-            <div className={windowClasses} onMouseDown={updateZIndex}>
+            <div className={windowClassNames} onMouseDown={updateZIndex}>
               <div className="bg-white flex flex-col grow overflow-hidden">
                 <TitleBar
                   isFocused={isFocused}
@@ -151,7 +152,7 @@ const Window: FC<WindowProps> = (props) => {
 
                 {menu && <Menu isFocused={isFocused} menu={menu} />}
 
-                <div className={childrenClasses}>{children}</div>
+                <div className={childrenClassNames}>{children}</div>
               </div>
             </div>
           </ResizableBox>

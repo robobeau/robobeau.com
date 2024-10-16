@@ -1,6 +1,8 @@
 import { ButtonHTMLAttributes, FC } from "react";
 
-import "@/components/Button/button.css";
+import classNames from "@/utils/classNames.util";
+
+import "./button.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   hasOutline?: boolean;
@@ -19,21 +21,21 @@ const Button: FC<ButtonProps> = (props) => {
   } = props;
 
   // #region Classes
-  const buttonClasses = `
-    button
-    ${hasOutline ? "button--with-outline" : ""}
-    ${hasRoundedCorners ? "button--with-rounded-corners" : ""}
-  `.trim();
-  const textClasses = `
-    button--text
-    ${hasTextOutline ? "button--text-with-outline" : ""}
-  `.trim();
+  const buttonClassNames = classNames(
+    "button",
+    hasOutline && "button--with-outline",
+    hasRoundedCorners && "button--with-rounded-corners"
+  );
+  const textClassNames = classNames(
+    "button--text",
+    hasTextOutline && "button--text-with-outline"
+  );
   // #endregion
 
   return (
-    <button className={`${buttonClasses} ${className}`} {...rest}>
+    <button className={`${buttonClassNames} ${className}`} {...rest}>
       <span className="button--text-wrapper">
-        <span className={textClasses}>{children}</span>
+        <span className={textClassNames}>{children}</span>
       </span>
     </button>
   );
