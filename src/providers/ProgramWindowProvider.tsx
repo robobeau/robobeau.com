@@ -6,7 +6,7 @@ import PositionContext, { Position } from "@/contexts/PositionContext";
 import PrevPositionContext from "@/contexts/PrevPositionContext";
 import PrevSizeContext from "@/contexts/PrevSizeContext";
 import SizeContext, { Size } from "@/contexts/SizeContext";
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 
 interface ProgramWindowProviderProps {
   initialIsMaximized: boolean;
@@ -32,6 +32,15 @@ const ProgramWindowProvider: FC<
   const [prevPosition, setPrevPosition] = useState<Position | null>(null);
   const [prevSize, setPrevSize] = useState<Size | null>(null);
   const [size, setSize] = useState(initialSize);
+
+  useEffect(() => {
+    setPosition(initialPosition);
+    setPrevPosition(null);
+  }, [initialPosition]);
+
+  useEffect(() => {
+    setSize(initialSize);
+  }, [initialSize]);
 
   return (
     <MaximizedContext.Provider value={[isMaximized, setIsMaximized]}>

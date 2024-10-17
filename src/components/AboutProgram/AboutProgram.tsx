@@ -1,23 +1,39 @@
-import { FC } from "react";
+"use client";
+
+import { FC, useContext } from "react";
 
 import Program from "@/components/Program/Program";
-import { ProgramIconWithUrlProps } from "@/components/ProgramIcon/ProgramIcon";
-import PROGM024 from "@/images/PROGM024.png";
+import BreakpointContext from "@/contexts/BreakpointContext";
+import Breakpoint from "@/enums/breakpoint";
 
 import AboutMe from "./about-me.md";
+import aboutProgramIcon from "./programIcon";
 
-const programIcon: ProgramIconWithUrlProps = {
-  image: PROGM024,
-  label: "About",
-  url: "/about",
+const initialOffsets = {
+  [Breakpoint.sm]: { x: 0, y: 100 },
+  [Breakpoint.md]: { x: 50, y: 100 },
+  [Breakpoint.lg]: { x: 125, y: 100 },
+  [Breakpoint.xl]: { x: 125, y: 100 },
+}
+
+const initialSizes = {
+  [Breakpoint.sm]: { height: 400, width: 325 },
+  [Breakpoint.md]: { height: 400, width: 325 },
+  [Breakpoint.lg]: { height: 400, width: 325 },
+  [Breakpoint.xl]: { height: 400, width: 325 },
 };
 
 const AboutProgram: FC = () => {
+  const breakpoint = useContext(BreakpointContext);
+
+  const initialOffset = initialOffsets[breakpoint];
+  const initialSize = initialSizes[breakpoint];
+
   return (
     <Program
-      icon={programIcon.image}
-      initialSize={{ height: 400, width: 325 }}
-      offset={{ x: 125, y: 100 }}
+      icon={aboutProgramIcon.image}
+      initialSize={initialSize}
+      offset={initialOffset}
       origin="tl"
       title="About Me"
       zIndexOffset={1}
@@ -27,4 +43,5 @@ const AboutProgram: FC = () => {
   );
 };
 
-export { AboutProgram as default, programIcon };
+export { AboutProgram as default };
+

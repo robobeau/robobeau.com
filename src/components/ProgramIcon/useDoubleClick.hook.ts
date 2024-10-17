@@ -2,8 +2,9 @@
 
 import { EffectCallback, RefObject, useEffect } from "react";
 
-const useDoubleClick = (ref: RefObject<HTMLElement>, callback?: () => void, ) => {
+const useDoubleClick = (ref: RefObject<HTMLElement>, callback?: () => void) => {
   const isMobile =
+    globalThis.navigator &&
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
@@ -25,13 +26,13 @@ const useDoubleClick = (ref: RefObject<HTMLElement>, callback?: () => void, ) =>
     };
 
     const touchStartEventListener = () => {
-      timesTapped++
+      timesTapped++;
 
       const stopTime = Date.now();
       const delta = stopTime - startTime;
 
       if (timesTapped > 1 && delta < 1000) {
-        timesTapped = 0
+        timesTapped = 0;
 
         callback?.();
       }

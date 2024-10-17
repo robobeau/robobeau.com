@@ -1,3 +1,5 @@
 import MainProgram from "@/components/MainProgram/MainProgram";
 
-export { MainProgram as default };
+const MainDefault = () => <MainProgram />;
+
+export { MainDefault as default };

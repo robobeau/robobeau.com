@@ -12,11 +12,7 @@ import PROGM019 from "@/images/PROGM019.png";
 import PROGM021 from "@/images/PROGM021.png";
 import WINFI001 from "@/images/WINFI001.png";
 
-const programIcon: ProgramIconWithUrlProps = {
-  image: PROGM021,
-  label: "Social",
-  url: "/social",
-};
+import programIcon from "./programIcon";
 
 const programIcons: Array<ProgramIconWithUrlProps> = [
   {
@@ -77,4 +73,4 @@ const SocialProgram: FC = () => {
   );
 };
 
-export { SocialProgram as default, programIcon };
+export { SocialProgram as default };

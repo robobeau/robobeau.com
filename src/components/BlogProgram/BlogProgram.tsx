@@ -42,4 +42,4 @@ const BlogProgram: FC<PropsWithChildren> = async (props) => {
   );
 };
 
-export { BlogProgram as default, programIcon };
+export { BlogProgram as default };

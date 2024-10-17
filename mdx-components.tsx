@@ -26,7 +26,7 @@ function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     p: ({ children }) => <p className="my-2">{children}</p>,
     pre: ({ children }) => (
-      <pre className="bg-slate-100 leading-3 p-2">{children}</pre>
+      <pre className="bg-gray-100 leading-3 p-2">{children}</pre>
     ),
     ul: ({ children }) => (
       <ul className="list-disc list-inside my-2">{children}</ul>
