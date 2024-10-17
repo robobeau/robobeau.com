@@ -15,6 +15,7 @@ const initialOffsets = {
   [Breakpoint.md]: { x: 100, y: 0 },
   [Breakpoint.lg]: { x: 400, y: 0 },
   [Breakpoint.xl]: { x: 400, y: 0 },
+  [Breakpoint.xxl]: { x: 400, y: 0 },
 };
 
 const initialSizes = {
@@ -22,6 +23,7 @@ const initialSizes = {
   [Breakpoint.md]: { height: 450, width: 450 },
   [Breakpoint.lg]: { height: 450, width: 450 },
   [Breakpoint.xl]: { height: 450, width: 450 },
+  [Breakpoint.xxl]: { height: 450, width: 450 },
 };
 
 const ReneImageProgram: FC = () => {

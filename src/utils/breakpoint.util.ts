@@ -5,6 +5,7 @@ const mediaQueries: Record<Breakpoint, string> = {
   [Breakpoint.md]: "(max-width: 900px)",
   [Breakpoint.lg]: "(max-width: 1200px)",
   [Breakpoint.xl]: "(max-width: 1536px)",
+  [Breakpoint.xxl]: "(max-width: 9999px)", // For ultrawide sickos
 };
 
 function getCurrentBreakpoint() {

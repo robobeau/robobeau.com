@@ -14,6 +14,7 @@ const initialOffsets = {
   [Breakpoint.md]: { x: 50, y: 100 },
   [Breakpoint.lg]: { x: 125, y: 100 },
   [Breakpoint.xl]: { x: 125, y: 100 },
+  [Breakpoint.xxl]: { x: 125, y: 100 },
 }
 
 const initialSizes = {
@@ -21,6 +22,7 @@ const initialSizes = {
   [Breakpoint.md]: { height: 400, width: 325 },
   [Breakpoint.lg]: { height: 400, width: 325 },
   [Breakpoint.xl]: { height: 400, width: 325 },
+  [Breakpoint.xxl]: { height: 400, width: 325 },
 };
 
 const AboutProgram: FC = () => {

@@ -16,6 +16,7 @@ const initialOffsets = {
   [Breakpoint.md]: { x: 300, y: 100 },
   [Breakpoint.lg]: { x: 300, y: 100 },
   [Breakpoint.xl]: { x: 300, y: 100 },
+  [Breakpoint.xxl]: { x: 300, y: 100 },
 };
 
 const initialSizes = {
@@ -23,6 +24,7 @@ const initialSizes = {
   [Breakpoint.md]: { height: 160, width: 240 },
   [Breakpoint.lg]: { height: 160, width: 240 },
   [Breakpoint.xl]: { height: 160, width: 240 },
+  [Breakpoint.xxl]: { height: 160, width: 240 },
 };
 
 const metadata: Metadata = {

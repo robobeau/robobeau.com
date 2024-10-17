@@ -19,6 +19,7 @@ const initialOffsets = {
   [Breakpoint.md]: { x: 0, y: 50 },
   [Breakpoint.lg]: { x: 0, y: 50 },
   [Breakpoint.xl]: { x: 0, y: 50 },
+  [Breakpoint.xxl]: { x: 0, y: 50 },
 };
 
 const initialSizes = {
@@ -26,6 +27,7 @@ const initialSizes = {
   [Breakpoint.md]: { height: 240, width: 480 },
   [Breakpoint.lg]: { height: 240, width: 480 },
   [Breakpoint.xl]: { height: 240, width: 480 },
+  [Breakpoint.xxl]: { height: 240, width: 480 },
 };
 
 const programIcons: Array<ProgramIconWithUrlProps> = [

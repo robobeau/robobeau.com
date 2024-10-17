@@ -3,6 +3,7 @@ enum Breakpoint {
   md = "md",
   lg = "lg",
   xl = "xl",
+  xxl = "xxl",
 }
 
 export { Breakpoint as default };
