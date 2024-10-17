@@ -1,15 +1,8 @@
-import { Metadata } from "next";
 import { FC, PropsWithChildren, ReactNode } from "react";
 
 import "@/app/globals.css";
-import { MY_HANDLE, MY_NAME } from "@/constants";
 import BreakpointProvider from "@/providers/BreakpointProvider";
 import ZIndexProvider from "@/providers/ZIndexProvider";
-
-const metadata: Metadata = {
-  authors: { name: MY_NAME },
-  title: `${MY_HANDLE}.exe`,
-};
 
 interface RootLayoutProps {
   main: ReactNode;
@@ -32,4 +25,4 @@ const RootLayout: FC<PropsWithChildren<RootLayoutProps>> = (props) => {
   );
 };
 
-export { RootLayout as default, metadata };
+export { RootLayout as default };
