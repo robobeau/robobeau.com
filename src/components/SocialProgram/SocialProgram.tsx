@@ -5,11 +5,12 @@ import Program from "@/components/Program/Program";
 import ProgramIcon, {
   ProgramIconWithUrlProps,
 } from "@/components/ProgramIcon/ProgramIcon";
+import MORIC036 from "@/images/MORIC036.png";
 import MSMAI012 from "@/images/MSMAI012.png";
-import PROGM001 from "@/images/PROGM001.png";
 import PROGM013 from "@/images/PROGM013.png";
 import PROGM019 from "@/images/PROGM019.png";
 import PROGM021 from "@/images/PROGM021.png";
+import SOL001 from "@/images/SOL001.png";
 import WINFI001 from "@/images/WINFI001.png";
 
 import programIcon from "./programIcon";
@@ -22,7 +23,7 @@ const programIcons: Array<ProgramIconWithUrlProps> = [
     url: "https://backloggd.com/u/robobeau",
   },
   {
-    image: PROGM001,
+    image: MORIC036,
     label: "Bluesky",
     target: "_blank",
     url: "https://bsky.app/profile/robobeau.com",
@@ -32,6 +33,12 @@ const programIcons: Array<ProgramIconWithUrlProps> = [
     label: "Instagram",
     target: "_blank",
     url: "https://instagram.com/robobeau",
+  },
+  {
+    image: SOL001,
+    label: "itch.io",
+    target: "_blank",
+    url: "https://robobeau.itch.io",
   },
   {
     image: PROGM019,
@@ -57,7 +64,7 @@ const SocialProgram: FC = () => {
   return (
     <Program
       icon={programIcon.image}
-      initialSize={{ height: 320, width: 240 }}
+      initialSize={{ height: 320, width: 260 }}
       offset={{ x: 325, y: 100 }}
       origin="tl"
       title={"Social"}
