@@ -13,7 +13,7 @@ import Image from "next/image";
 
 const initialOffsets = {
   [Breakpoint.sm]: { x: -40, y: 200 },
-  [Breakpoint.md]: { x: 300, y: 100 },
+  [Breakpoint.md]: { x: -40, y: 200 },
   [Breakpoint.lg]: { x: 300, y: 100 },
   [Breakpoint.xl]: { x: 300, y: 100 },
   [Breakpoint.xxl]: { x: 300, y: 100 },
@@ -34,7 +34,7 @@ const metadata: Metadata = {
 
 const origins = {
   [Breakpoint.sm]: "m" as const,
-  [Breakpoint.md]: "tl" as const,
+  [Breakpoint.md]: "m" as const,
   [Breakpoint.lg]: "tl" as const,
   [Breakpoint.xl]: "tl" as const,
   [Breakpoint.xxl]: "tl" as const,
