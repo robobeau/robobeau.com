@@ -1,9 +1,11 @@
 import debounce from "lodash.debounce";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
 import { MenuItem } from "@/components/Program/Menu";
 
 function useMenuHotkey(menu: Array<MenuItem>, isFocused: boolean) {
+  const router = useRouter();
   const menuHotkeyHandler = useMemo(
     () =>
       debounce(
@@ -21,7 +23,13 @@ function useMenuHotkey(menu: Array<MenuItem>, isFocused: boolean) {
             );
 
             if (menuItem) {
-              window.open(menuItem.url, menuItem.target);
+              const { target, url } = menuItem;
+
+              if (target) {
+                window.open(url, target);
+              } else {
+                router.push(url);
+              }
             }
           }
         },
