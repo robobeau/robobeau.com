@@ -1,7 +1,7 @@
 import Loading from "@/components/Loading/Loading";
 import createService from "@/services/blog";
 import Page from "@/types/page";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 type BlogParams = {
@@ -12,17 +12,13 @@ type BlogParams = {
 };
 
 async function generateMetadata(
-  pageProps: Page<BlogParams>,
-  parent: ResolvingMetadata
+  pageProps: Page<BlogParams>
 ): Promise<Metadata> {
-  const layoutMetadata = await parent;
-  const layoutTitle = layoutMetadata.title?.absolute;
-
   const blogService = createService();
   const blogMetadata = await blogService.getBlogMetadata(pageProps.params);
 
   return {
-    title: `${layoutTitle && "Blog | "}${blogMetadata.title}`,
+    title: `Blog | ${blogMetadata.title}`,
   };
 }
 
