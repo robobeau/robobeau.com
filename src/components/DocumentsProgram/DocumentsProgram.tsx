@@ -11,8 +11,8 @@ import MSMAI010 from "@/images/MSMAI010.png";
 import SYSED002 from "@/images/SYSED002.png";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: 25, y: 550 },
-  [Breakpoint.md]: { x: 400, y: 250 },
+  [Breakpoint.sm]: { x: -90, y: 240 },
+  [Breakpoint.md]: { x: 100, y: 210 },
   [Breakpoint.lg]: { x: 700, y: 50 },
   [Breakpoint.xl]: { x: 700, y: 50 },
   [Breakpoint.xxl]: { x: 700, y: 50 },
@@ -26,18 +26,27 @@ const initialSizes = {
   [Breakpoint.xxl]: { height: 160, width: 240 },
 };
 
+const origins = {
+  [Breakpoint.sm]: "m" as const,
+  [Breakpoint.md]: "m" as const,
+  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.xl]: "tl" as const,
+  [Breakpoint.xxl]: "tl" as const,
+};
+
 const DocumentsProgram: FC = () => {
   const breakpoint = useContext(BreakpointContext);
 
   const initialOffset = initialOffsets[breakpoint];
   const initialSize = initialSizes[breakpoint];
+  const origin = origins[breakpoint];
 
   return (
     <Program
       icon={MSMAI010}
       initialSize={initialSize}
       offset={initialOffset}
-      origin="tl"
+      origin={origin}
       title="Documents"
     >
       <div className="flex flex-row gap-x-8 items-end mt-auto">

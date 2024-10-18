@@ -15,8 +15,8 @@ import BreakpointContext from "@/contexts/BreakpointContext";
 import Breakpoint from "@/enums/breakpoint";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: 50, y: 0 },
-  [Breakpoint.md]: { x: 0, y: 50 },
+  [Breakpoint.sm]: { x: -40, y: 0 },
+  [Breakpoint.md]: { x: -40, y: 0 },
   [Breakpoint.lg]: { x: 0, y: 50 },
   [Breakpoint.xl]: { x: 0, y: 50 },
   [Breakpoint.xxl]: { x: 0, y: 50 },
@@ -24,10 +24,18 @@ const initialOffsets = {
 
 const initialSizes = {
   [Breakpoint.sm]: { height: 180, width: 300 },
-  [Breakpoint.md]: { height: 240, width: 480 },
+  [Breakpoint.md]: { height: 180, width: 300 },
   [Breakpoint.lg]: { height: 240, width: 480 },
   [Breakpoint.xl]: { height: 240, width: 480 },
   [Breakpoint.xxl]: { height: 240, width: 480 },
+};
+
+const origins = {
+  [Breakpoint.sm]: "m" as const,
+  [Breakpoint.md]: "m" as const,
+  [Breakpoint.lg]: "m" as const,
+  [Breakpoint.xl]: "tl" as const,
+  [Breakpoint.xxl]: "tl" as const,
 };
 
 const programIcons: Array<ProgramIconWithUrlProps> = [
@@ -41,13 +49,14 @@ const MainProgram: FC = () => {
 
   const initialOffset = initialOffsets[breakpoint];
   const initialSize = initialSizes[breakpoint];
+  const origin = origins[breakpoint]
 
   return (
     <Program
       endSessionOnClose={true}
       initialSize={initialSize}
       offset={initialOffset}
-      origin="tl"
+      origin={origin}
       title="robobeau"
     >
       <div className="flex flex-row gap-x-8 items-end mt-auto">

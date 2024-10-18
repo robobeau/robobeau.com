@@ -45,7 +45,7 @@ const Draggable: FC<DraggableProps> = (props) => {
   return (
     <_Draggable
       bounds="html"
-      cancel="a, button"
+      cancel="a, button, .overflow-auto"
       defaultClassName={className}
       disabled={isMaximized}
       nodeRef={dragHandleRef}

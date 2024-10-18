@@ -88,8 +88,8 @@ function getStartingPosition(
   }
 
   return {
-    x: Math.max(position.x, 0),
-    y: Math.max(position.y, 0),
+    x: position.x,
+    y: position.y,
   };
 }
 

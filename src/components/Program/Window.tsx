@@ -94,7 +94,7 @@ const Window: FC<WindowProps> = (props) => {
   const childrenClassNames = classNames(
     "flex flex-col h-full w-full",
     hasPadding && "p-4",
-    isScrollable && "overflow-auto"
+    isScrollable && "overflow-auto touch-auto"
   );
   const draggableClassNames = classNames(
     "absolute self-start shadow-md",
@@ -140,7 +140,11 @@ const Window: FC<WindowProps> = (props) => {
             maxConstraints={maxConstraints}
             onResizeStart={updateZIndex}
           >
-            <div className={windowClassNames} onMouseDown={updateZIndex}>
+            <div
+              className={windowClassNames}
+              onMouseDown={updateZIndex}
+              onTouchStart={updateZIndex}
+            >
               <div className="bg-white flex flex-col grow overflow-hidden">
                 <TitleBar
                   isFocused={isFocused}

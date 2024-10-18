@@ -1,11 +1,11 @@
 import Breakpoint from "@/enums/breakpoint";
 
 const mediaQueries: Record<Breakpoint, string> = {
-  [Breakpoint.sm]: "(max-width: 600px)",
-  [Breakpoint.md]: "(max-width: 900px)",
-  [Breakpoint.lg]: "(max-width: 1200px)",
-  [Breakpoint.xl]: "(max-width: 1536px)",
-  [Breakpoint.xxl]: "(max-width: 9999px)", // For ultrawide sickos
+  [Breakpoint.sm]: `(max-width: ${Breakpoint.sm}px)`,
+  [Breakpoint.md]: `(max-width: ${Breakpoint.md}px)`,
+  [Breakpoint.lg]: `(max-width: ${Breakpoint.lg}px)`,
+  [Breakpoint.xl]: `(max-width: ${Breakpoint.xl}px)`,
+  [Breakpoint.xxl]: `(max-width: ${Breakpoint.xxl}px)`,
 };
 
 function getCurrentBreakpoint() {
@@ -17,7 +17,7 @@ function getCurrentBreakpoint() {
   if (mediaQuery) {
     const [breakpoint] = mediaQuery;
 
-    return breakpoint as Breakpoint;
+    return breakpoint as unknown as Breakpoint;
   }
 }
 

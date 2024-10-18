@@ -12,7 +12,7 @@ import BOCOF001 from "@/images/BOCOF001.png";
 import Image from "next/image";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: 300, y: 100 },
+  [Breakpoint.sm]: { x: -40, y: 200 },
   [Breakpoint.md]: { x: 300, y: 100 },
   [Breakpoint.lg]: { x: 300, y: 100 },
   [Breakpoint.xl]: { x: 300, y: 100 },
@@ -32,18 +32,27 @@ const metadata: Metadata = {
   title: `${MY_HANDLE}.exe`,
 };
 
+const origins = {
+  [Breakpoint.sm]: "m" as const,
+  [Breakpoint.md]: "tl" as const,
+  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.xl]: "tl" as const,
+  [Breakpoint.xxl]: "tl" as const,
+};
+
 const Default: FC = () => {
   const breakpoint = useContext(BreakpointContext);
 
   const initialOffset = initialOffsets[breakpoint];
   const initialSize = initialSizes[breakpoint];
+  const origin = origins[breakpoint];
 
   return (
     <Program
       icon={BOCOF001}
       initialSize={initialSize}
       offset={initialOffset}
-      origin="tl"
+      origin={origin}
       title="Warning"
       zIndexOffset={1}
     >
@@ -56,7 +65,7 @@ const Default: FC = () => {
         />
 
         <div className="flex flex-col gap-y-0 text-center">
-          <h1>Under construction!</h1>
+          <h1 className="whitespace-nowrap">Under construction!</h1>
 
           <span className="text-xs">Please, pardon my dust!</span>
         </div>

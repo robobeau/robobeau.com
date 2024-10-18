@@ -11,19 +11,27 @@ import PROGM013 from "@/images/PROGM013.png";
 import ReneMoshed from "@/images/ReneMoshed.gif";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: 50, y: 375 },
-  [Breakpoint.md]: { x: 100, y: 0 },
+  [Breakpoint.sm]: { x: -20, y: 150 },
+  [Breakpoint.md]: { x: 100, y: -90 },
   [Breakpoint.lg]: { x: 400, y: 0 },
   [Breakpoint.xl]: { x: 400, y: 0 },
   [Breakpoint.xxl]: { x: 400, y: 0 },
 };
 
 const initialSizes = {
-  [Breakpoint.sm]: { height: 400, width: 350 },
-  [Breakpoint.md]: { height: 450, width: 450 },
+  [Breakpoint.sm]: { height: 380, width: 300 },
+  [Breakpoint.md]: { height: 400, width: 400 },
   [Breakpoint.lg]: { height: 450, width: 450 },
   [Breakpoint.xl]: { height: 450, width: 450 },
   [Breakpoint.xxl]: { height: 450, width: 450 },
+};
+
+const origins = {
+  [Breakpoint.sm]: "m" as const,
+  [Breakpoint.md]: "m" as const,
+  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.xl]: "tl" as const,
+  [Breakpoint.xxl]: "tl" as const,
 };
 
 const ReneImageProgram: FC = () => {
@@ -31,6 +39,7 @@ const ReneImageProgram: FC = () => {
 
   const initialOffset = initialOffsets[breakpoint];
   const initialSize = initialSizes[breakpoint];
+  const origin = origins[breakpoint];
 
   return (
     <Program
@@ -38,7 +47,7 @@ const ReneImageProgram: FC = () => {
       icon={PROGM013}
       initialSize={initialSize}
       offset={initialOffset}
-      origin="tl"
+      origin={origin}
       title="rene.jpeg"
     >
       <Image
