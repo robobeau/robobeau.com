@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import Program from "@/components/Program/Program";
 import ProgramIcon, {
@@ -14,6 +16,32 @@ import SOL001 from "@/images/SOL001.png";
 import WINFI001 from "@/images/WINFI001.png";
 
 import programIcon from "./programIcon";
+import Breakpoint from "@/enums/breakpoint";
+import BreakpointContext from "@/contexts/BreakpointContext";
+
+const initialOffsets = {
+  [Breakpoint.sm]: { x: -40, y: -150 },
+  [Breakpoint.md]: { x: 100, y: 0 },
+  [Breakpoint.lg]: { x: 325, y: 100 },
+  [Breakpoint.xl]: { x: 325, y: 100 },
+  [Breakpoint.xxl]: { x: 325, y: 100 },
+}
+
+const initialSizes = {
+  [Breakpoint.sm]: { height: 320, width: 260 },
+  [Breakpoint.md]: { height: 320, width: 260 },
+  [Breakpoint.lg]: { height: 320, width: 260 },
+  [Breakpoint.xl]: { height: 320, width: 260 },
+  [Breakpoint.xxl]: { height: 320, width: 260 },
+};
+
+const origins = {
+  [Breakpoint.sm]: "m" as const,
+  [Breakpoint.md]: "m" as const,
+  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.xl]: "tl" as const,
+  [Breakpoint.xxl]: "tl" as const,
+};
 
 const programIcons: Array<ProgramIconWithUrlProps> = [
   {
@@ -61,13 +89,20 @@ const programIcons: Array<ProgramIconWithUrlProps> = [
 ];
 
 const SocialProgram: FC = () => {
+  const breakpoint = useContext(BreakpointContext);
+
+  const initialOffset = initialOffsets[breakpoint];
+  const initialSize = initialSizes[breakpoint];
+  const origin = origins[breakpoint];
+
   return (
     <Program
       icon={programIcon.image}
-      initialSize={{ height: 320, width: 260 }}
-      offset={{ x: 325, y: 100 }}
-      origin="tl"
+      initialSize={initialSize}
+      offset={initialOffset}
+      origin={origin}
       title={"Social"}
+      zIndexOffset={1}
     >
       <div className="flex flex-row flex-wrap gap-x-8 gap-y-4 items-end mt-auto">
         {programIcons.map(({ target, url, ...programIconProps }, index) => (
