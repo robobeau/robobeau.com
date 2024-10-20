@@ -1,15 +1,42 @@
-import { FC, PropsWithChildren } from "react";
+"use client";
 
-import FileBrowser from "@/components/FileBrowser/FileBrowser";
+import { FC, PropsWithChildren, useContext } from "react";
+
 import { MenuItem } from "@/components/Program/Menu";
 import Program from "@/components/Program/Program";
 import { ProgramIconWithUrlProps } from "@/components/ProgramIcon/ProgramIcon";
 import NOTEP001 from "@/images/NOTEP001.png";
-import createBlogService from "@/services/blog";
+import Breakpoint from "@/enums/breakpoint";
+import BreakpointContext from "@/contexts/BreakpointContext";
 
 const blogMenu: Array<MenuItem> = [
+  { label: "Files", key: "F", url: "/blog" },
   { label: "RSS Feed", key: "R", url: "/blog/rss", target: "_blank" },
 ];
+
+const initialOffsets = {
+  [Breakpoint.sm]: { x: -40, y: 0 },
+  [Breakpoint.md]: { x: -40, y: 0 },
+  [Breakpoint.lg]: { x: -40, y: 0 },
+  [Breakpoint.xl]: { x: 200, y: -5 },
+  [Breakpoint.xxl]: { x: 200, y: -5 },
+};
+
+const initialSizes = {
+  [Breakpoint.sm]: { height: 500, width: 350 },
+  [Breakpoint.md]: { height: 500, width: 500 },
+  [Breakpoint.lg]: { height: 500, width: 500 },
+  [Breakpoint.xl]: { height: 500, width: 500 },
+  [Breakpoint.xxl]: { height: 500, width: 500 },
+};
+
+const origins = {
+  [Breakpoint.sm]: "m" as const,
+  [Breakpoint.md]: "m" as const,
+  [Breakpoint.lg]: "m" as const,
+  [Breakpoint.xl]: "tl" as const,
+  [Breakpoint.xxl]: "tl" as const,
+};
 
 const programIcon: ProgramIconWithUrlProps = {
   image: NOTEP001,
@@ -17,26 +44,27 @@ const programIcon: ProgramIconWithUrlProps = {
   url: "/blog",
 };
 
-const BlogProgram: FC<PropsWithChildren> = async (props) => {
+const BlogProgram: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
-  const blogService = createBlogService();
-  const blogs = await blogService.getBlogs();
+  const breakpoint = useContext(BreakpointContext);
+
+  const initialOffset = initialOffsets[breakpoint];
+  const initialSize = initialSizes[breakpoint];
+  const origin = origins[breakpoint];
 
   return (
     <Program
       hasPadding={false}
       icon={programIcon.image}
-      initialSize={{ height: 475, width: 475 }}
+      initialSize={initialSize}
       isScrollable={false}
       menu={blogMenu}
-      offset={{ x: 325, y: 0 }}
-      origin="tl"
+      offset={initialOffset}
+      origin={origin}
       title="Blog"
       zIndexOffset={1}
     >
-      <FileBrowser blogs={blogs} />
-
       {children}
     </Program>
   );
