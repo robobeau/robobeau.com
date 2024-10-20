@@ -36,7 +36,7 @@ function useMenuHotkey(menu: Array<MenuItem>, isFocused: boolean) {
         100,
         { leading: true, trailing: false }
       ),
-    [isFocused, menu]
+    [isFocused, menu, router]
   );
 
   useEffect(() => {
