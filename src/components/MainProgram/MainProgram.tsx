@@ -17,7 +17,7 @@ import Breakpoint from "@/enums/breakpoint";
 const initialOffsets = {
   [Breakpoint.sm]: { x: -40, y: 0 },
   [Breakpoint.md]: { x: -40, y: 0 },
-  [Breakpoint.lg]: { x: 0, y: 50 },
+  [Breakpoint.lg]: { x: -40, y: 0 },
   [Breakpoint.xl]: { x: 0, y: 50 },
   [Breakpoint.xxl]: { x: 0, y: 50 },
 };
@@ -25,7 +25,7 @@ const initialOffsets = {
 const initialSizes = {
   [Breakpoint.sm]: { height: 180, width: 300 },
   [Breakpoint.md]: { height: 180, width: 300 },
-  [Breakpoint.lg]: { height: 240, width: 480 },
+  [Breakpoint.lg]: { height: 180, width: 300 },
   [Breakpoint.xl]: { height: 240, width: 480 },
   [Breakpoint.xxl]: { height: 240, width: 480 },
 };

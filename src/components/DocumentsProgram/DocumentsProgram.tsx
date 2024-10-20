@@ -11,11 +11,11 @@ import MSMAI010 from "@/images/MSMAI010.png";
 import SYSED002 from "@/images/SYSED002.png";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: -90, y: 240 },
-  [Breakpoint.md]: { x: 100, y: 210 },
-  [Breakpoint.lg]: { x: 700, y: 50 },
-  [Breakpoint.xl]: { x: 700, y: 50 },
-  [Breakpoint.xxl]: { x: 700, y: 50 },
+  [Breakpoint.sm]: { x: -95, y: 240 },
+  [Breakpoint.md]: { x: 100, y: 156 },
+  [Breakpoint.lg]: { x: 100, y: 156 },
+  [Breakpoint.xl]: { x: 918, y: 100 },
+  [Breakpoint.xxl]: { x: 918, y: 100 },
 };
 
 const initialSizes = {
@@ -29,7 +29,7 @@ const initialSizes = {
 const origins = {
   [Breakpoint.sm]: "m" as const,
   [Breakpoint.md]: "m" as const,
-  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.lg]: "m" as const,
   [Breakpoint.xl]: "tl" as const,
   [Breakpoint.xxl]: "tl" as const,
 };

@@ -20,25 +20,25 @@ import Breakpoint from "@/enums/breakpoint";
 import BreakpointContext from "@/contexts/BreakpointContext";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: -40, y: -150 },
-  [Breakpoint.md]: { x: 100, y: 0 },
-  [Breakpoint.lg]: { x: 325, y: 100 },
-  [Breakpoint.xl]: { x: 325, y: 100 },
-  [Breakpoint.xxl]: { x: 325, y: 100 },
+  [Breakpoint.sm]: { x: -40, y: 0 },
+  [Breakpoint.md]: { x: -40, y: 0 },
+  [Breakpoint.lg]: { x: -40, y: 0 },
+  [Breakpoint.xl]: { x: 300, y: 100 },
+  [Breakpoint.xxl]: { x: 300, y: 100 },
 }
 
 const initialSizes = {
-  [Breakpoint.sm]: { height: 320, width: 260 },
-  [Breakpoint.md]: { height: 320, width: 260 },
-  [Breakpoint.lg]: { height: 320, width: 260 },
-  [Breakpoint.xl]: { height: 320, width: 260 },
-  [Breakpoint.xxl]: { height: 320, width: 260 },
+  [Breakpoint.sm]: { height: 320, width: 275 },
+  [Breakpoint.md]: { height: 320, width: 275 },
+  [Breakpoint.lg]: { height: 320, width: 275 },
+  [Breakpoint.xl]: { height: 320, width: 275 },
+  [Breakpoint.xxl]: { height: 320, width: 275 },
 };
 
 const origins = {
   [Breakpoint.sm]: "m" as const,
   [Breakpoint.md]: "m" as const,
-  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.lg]: "m" as const,
   [Breakpoint.xl]: "tl" as const,
   [Breakpoint.xxl]: "tl" as const,
 };

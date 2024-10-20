@@ -14,9 +14,9 @@ import Image from "next/image";
 const initialOffsets = {
   [Breakpoint.sm]: { x: -40, y: 200 },
   [Breakpoint.md]: { x: -40, y: 200 },
-  [Breakpoint.lg]: { x: 300, y: 100 },
-  [Breakpoint.xl]: { x: 300, y: 100 },
-  [Breakpoint.xxl]: { x: 300, y: 100 },
+  [Breakpoint.lg]: { x: -40, y: 200 },
+  [Breakpoint.xl]: { x: 350, y: 200 },
+  [Breakpoint.xxl]: { x: 350, y: 200 },
 };
 
 const initialSizes = {
@@ -35,7 +35,7 @@ const metadata: Metadata = {
 const origins = {
   [Breakpoint.sm]: "m" as const,
   [Breakpoint.md]: "m" as const,
-  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.lg]: "m" as const,
   [Breakpoint.xl]: "tl" as const,
   [Breakpoint.xxl]: "tl" as const,
 };

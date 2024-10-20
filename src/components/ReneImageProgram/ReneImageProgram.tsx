@@ -11,25 +11,25 @@ import PROGM013 from "@/images/PROGM013.png";
 import ReneMoshed from "@/images/ReneMoshed.gif";
 
 const initialOffsets = {
-  [Breakpoint.sm]: { x: -20, y: 150 },
+  [Breakpoint.sm]: { x: -15, y: 150 },
   [Breakpoint.md]: { x: 100, y: -90 },
-  [Breakpoint.lg]: { x: 400, y: 0 },
-  [Breakpoint.xl]: { x: 400, y: 0 },
-  [Breakpoint.xxl]: { x: 400, y: 0 },
+  [Breakpoint.lg]: { x: 150, y: -140 },
+  [Breakpoint.xl]: { x: 502, y: 20 },
+  [Breakpoint.xxl]: { x: 502, y: 20 },
 };
 
 const initialSizes = {
   [Breakpoint.sm]: { height: 380, width: 300 },
   [Breakpoint.md]: { height: 400, width: 400 },
-  [Breakpoint.lg]: { height: 450, width: 450 },
-  [Breakpoint.xl]: { height: 450, width: 450 },
-  [Breakpoint.xxl]: { height: 450, width: 450 },
+  [Breakpoint.lg]: { height: 500, width: 500 },
+  [Breakpoint.xl]: { height: 600, width: 600 },
+  [Breakpoint.xxl]: { height: 600, width: 600 },
 };
 
 const origins = {
   [Breakpoint.sm]: "m" as const,
   [Breakpoint.md]: "m" as const,
-  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.lg]: "m" as const,
   [Breakpoint.xl]: "tl" as const,
   [Breakpoint.xxl]: "tl" as const,
 };

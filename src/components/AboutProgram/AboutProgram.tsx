@@ -11,24 +11,24 @@ import aboutProgramIcon from "./programIcon";
 
 const initialOffsets = {
   [Breakpoint.sm]: { x: -40, y: -260 },
-  [Breakpoint.md]: { x: -200, y: 0 },
-  [Breakpoint.lg]: { x: 125, y: 100 },
-  [Breakpoint.xl]: { x: 125, y: 100 },
-  [Breakpoint.xxl]: { x: 125, y: 100 },
+  [Breakpoint.md]: { x: -215, y: 0 },
+  [Breakpoint.lg]: { x: -265, y: -50 },
+  [Breakpoint.xl]: { x: 100, y: 100 },
+  [Breakpoint.xxl]: { x: 100, y: 100 },
 }
 
 const initialSizes = {
-  [Breakpoint.sm]: { height: 300, width: 340 },
-  [Breakpoint.md]: { height: 400, width: 325 },
-  [Breakpoint.lg]: { height: 400, width: 325 },
-  [Breakpoint.xl]: { height: 400, width: 325 },
-  [Breakpoint.xxl]: { height: 400, width: 325 },
+  [Breakpoint.sm]: { height: 300, width: 350 },
+  [Breakpoint.md]: { height: 300, width: 350 },
+  [Breakpoint.lg]: { height: 400, width: 435 },
+  [Breakpoint.xl]: { height: 400, width: 435 },
+  [Breakpoint.xxl]: { height: 400, width: 435 },
 };
 
 const origins = {
   [Breakpoint.sm]: "m" as const,
   [Breakpoint.md]: "m" as const,
-  [Breakpoint.lg]: "tl" as const,
+  [Breakpoint.lg]: "m" as const,
   [Breakpoint.xl]: "tl" as const,
   [Breakpoint.xxl]: "tl" as const,
 };
