@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+// import colors from "tailwindcss/colors";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -18,8 +20,47 @@ const config: Config = {
       cursor: {
         wait: "url('~/src/images/Hourglass.gif'), wait",
       },
+      listStyleType: {
+        square: "square",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin((plugin) => {
+      const { addUtilities } = plugin;
+
+      addUtilities({
+        // ".scrollbar-windows": {
+        //   'scrollbar-color': `${colors.gray[200]} ${colors.gray[300]}`,
+        //   'scrollbar-gutter': 'stable',
+        //   'scrollbar-width': 'auto',
+        //   "&::-webkit-scrollbar": {
+        //   },
+        //   "&::-webkit-scrollbar-button": {
+        //     '&:horizontal': {
+        //     },
+        //     '&:vertical': {
+        //     },
+        //   },
+        //   "&::-webkit-scrollbar-corner": {
+        //   },
+        //   "&::-webkit-scrollbar-thumb": {
+        //     "&:horizontal": {
+        //     },
+        //     "&:vertical": {
+        //     },
+        //   },
+        //   "&::-webkit-scrollbar-track": {
+        //     "&:horizontal": {
+        //     },
+        //     "&:vertical": {
+        //     },
+        //   },
+        //   '&::-webkit-scrollbar-track-piece': {
+        //   },
+        // },
+      });
+    }),
+  ],
 };
 export default config;
