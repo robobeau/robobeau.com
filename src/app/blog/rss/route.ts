@@ -20,14 +20,15 @@ async function GET(request: NextRequest) {
   const blogs = await blogService.getBlogs();
 
   blogs.forEach((blog) => {
-    const { date, link, title } = blog;
+    const { content, date, link, title } = blog;
     const id = crypto.createHash("md5").update(title).digest("hex");
 
     feed.addItem({
-      date: new Date(date),
       id,
-      link: `${BASE_URL}${link}`,
       title,
+      content,
+      date: new Date(date),
+      link: `${BASE_URL}${link}`,
     });
   });
 
@@ -35,7 +36,7 @@ async function GET(request: NextRequest) {
 
   return new Response(rssFeed, {
     headers: {
-      "Content-Type": "application/xml; charset=utf-8",
+      "Content-Type": "application/rss+xml; charset=utf-8",
     },
   });
 }

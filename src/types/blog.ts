@@ -1,15 +1,12 @@
-import Showdown from "showdown";
-
 type Blog = {
   author: string;
+  content: string;
   date: Date;
-  // html: string;
   link: string;
-  // markdown: string;
   title: string;
 };
 
-interface BlogMetadata extends Showdown.Metadata {
+interface BlogMetadata {
   author: string;
   date: string;
   title: string;

@@ -1,9 +1,16 @@
-import { BLOGS_DIRECTORY } from "@/constants";
-import { BlogMetadata } from "@/types/blog";
 import fs from "node:fs";
 import path from "path";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
 import { read } from "to-vfile";
-import { matter } from "vfile-matter";
+import { unified } from "unified";
+
+import { BLOGS_DIRECTORY } from "@/constants";
+import { Blog, BlogMetadata } from "@/types/blog";
+import { parseFrontmatter } from "@/utils/unified.util";
 
 function getBlogFilePaths(directory: string): Array<string> {
   return fs.readdirSync(directory).reduce((files, file) => {
@@ -31,21 +38,31 @@ async function getBlogs() {
   return blogs;
 }
 
-async function getMetadataFromFilePath(filePath: string) {
+async function getMetadataFromFilePath(filePath: string): Promise<Blog> {
   const [_, relativeFilePath] = filePath.match(/^.*blogs(.*)\.md$/) ?? [];
   const link = `/blog${relativeFilePath.replace(/\\/g, "/")}`;
-
-  const vFile = await read(filePath);
-  matter(vFile);
-
-  const { author, date, title } = vFile.data.matter as BlogMetadata;
+  const vFile = await read(filePath, {
+    encoding: "utf-8",
+  });
+  const processedFile = await unified()
+    .use(remarkFrontmatter)
+    .use(parseFrontmatter)
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
+    .process(vFile);
+  const { data, value } = processedFile;
+  const { author, date, title } = data.matter as BlogMetadata;
 
   return {
     author,
     link,
     title,
+    content: String(value),
     date: new Date(date),
   };
 }
 
 export { getBlogs as default };
+
