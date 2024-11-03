@@ -7,7 +7,7 @@ import BreakpointContext from "@/contexts/BreakpointContext";
 import Breakpoint from "@/enums/breakpoint";
 
 import AboutMe from "./about-me.md";
-import aboutProgramIcon from "./programIcon";
+import aboutMeProgramIcon from "./programIcon";
 
 const initialOffsets = {
   [Breakpoint.sm]: { x: -40, y: -260 },
@@ -33,7 +33,7 @@ const origins = {
   [Breakpoint.xxl]: "tl" as const,
 };
 
-const AboutProgram: FC = () => {
+const AboutMeProgram: FC = () => {
   const breakpoint = useContext(BreakpointContext);
 
   const initialOffset = initialOffsets[breakpoint];
@@ -42,17 +42,19 @@ const AboutProgram: FC = () => {
 
   return (
     <Program
-      icon={aboutProgramIcon.image}
+      icon={aboutMeProgramIcon.image}
       initialSize={initialSize}
       offset={initialOffset}
       origin={origin}
       title="About Me"
       zIndexOffset={1}
     >
-      <AboutMe />
+      <main>
+        <AboutMe />
+      </main>
     </Program>
   );
 };
 
-export { AboutProgram as default };
+export { AboutMeProgram as default };
 
