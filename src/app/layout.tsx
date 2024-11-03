@@ -13,7 +13,7 @@ const RootLayout: FC<PropsWithChildren<RootLayoutProps>> = (props) => {
 
   return (
     <html lang="en">
-      <body className="bg-teal-700 bg-tokimeki flex flex-row gap-x-2 items-end mt-auto overflow-hidden p-10">
+      <body className="bg-teal-700 bg-tokimeki flex flex-row font-sans gap-x-2 items-end mt-auto overflow-hidden p-10">
         <BreakpointProvider>
           <ZIndexProvider>
             {main}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FC, useContext } from "react";
 
 import "@/app/globals.css";
-import aboutProgramIcon from "@/components/AboutProgram/programIcon";
+import aboutMeProgramIcon from "@/components/AboutMeProgram/programIcon";
 import blogProgramIcon from "@/components/BlogProgram/programIcon";
 import Program from "@/components/Program/Program";
 import ProgramIcon, {
@@ -39,7 +39,7 @@ const origins = {
 };
 
 const programIcons: Array<ProgramIconWithUrlProps> = [
-  aboutProgramIcon,
+  aboutMeProgramIcon,
   blogProgramIcon,
   socialProgramIcon,
 ];
@@ -59,13 +59,13 @@ const MainProgram: FC = () => {
       origin={origin}
       title="robobeau"
     >
-      <div className="flex flex-row gap-x-8 items-end mt-auto">
+      <nav className="flex flex-row gap-x-8 items-end mt-auto">
         {programIcons.map(({ target, url, ...programIconProps }, index) => (
           <Link className="shrink-0" href={url} key={index} target={target}>
             <ProgramIcon {...programIconProps} />
           </Link>
         ))}
-      </div>
+      </nav>
     </Program>
   );
 };

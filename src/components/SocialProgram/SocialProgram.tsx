@@ -104,13 +104,13 @@ const SocialProgram: FC = () => {
       title={"Social"}
       zIndexOffset={1}
     >
-      <div className="flex flex-row flex-wrap gap-x-8 gap-y-4 items-end mt-auto">
+      <nav className="flex flex-row flex-wrap gap-x-8 gap-y-4 items-end mt-auto">
         {programIcons.map(({ target, url, ...programIconProps }, index) => (
           <Link className="shrink-0" href={url} key={index} target={target}>
             <ProgramIcon {...programIconProps} />
           </Link>
         ))}
-      </div>
+      </nav>
     </Program>
   );
 };

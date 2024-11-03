@@ -50,13 +50,15 @@ const ReneImageProgram: FC = () => {
       origin={origin}
       title="rene.jpeg"
     >
-      <Image
-        alt={MY_NAME}
-        className="absolue h-full inset-0 object-cover w-full"
-        priority
-        src={ReneMoshed}
-        unoptimized
-      />
+      <aside>
+        <Image
+          alt={MY_NAME}
+          className="absolue h-full inset-0 object-cover w-full"
+          priority
+          src={ReneMoshed}
+          unoptimized
+        />
+      </aside>
     </Program>
   );
 };

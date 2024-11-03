@@ -49,11 +49,11 @@ const DocumentsProgram: FC = () => {
       origin={origin}
       title="Documents"
     >
-      <div className="flex flex-row gap-x-8 items-end mt-auto">
+      <section className="flex flex-row gap-x-8 items-end mt-auto">
         <Link href="/Rene Esteves Resume.pdf" target="_blank">
           <ProgramIcon image={SYSED002} label="Resume" />
         </Link>
-      </div>
+      </section>
     </Program>
   );
 };

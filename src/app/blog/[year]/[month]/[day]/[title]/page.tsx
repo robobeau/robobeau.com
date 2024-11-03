@@ -34,9 +34,9 @@ const Blog = async (props: Page<BlogParams>) => {
   );
 
   return (
-    <div className="overflow-auto p-4">
+    <main className="overflow-auto p-4">
       <Blog />
-    </div>
+    </main>
   );
 };
 

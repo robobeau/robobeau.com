@@ -22,14 +22,14 @@ function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: ({ children }) => <h6 className="mb-1 text-base">{children}</h6>,
     hr: () => <hr className="my-4" />,
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside my-2">{children}</ol>
+      <ol className="list-decimal list-inside mb-2">{children}</ol>
     ),
     p: ({ children }) => <p className="my-2">{children}</p>,
     pre: ({ children }) => (
       <pre className="bg-gray-100 leading-3 p-2">{children}</pre>
     ),
     ul: ({ children }) => (
-      <ul className="list-disc list-inside my-2">{children}</ul>
+      <ul className="list-square list-inside mb-2 pl-2">{children}</ul>
     ),
   };
 }
