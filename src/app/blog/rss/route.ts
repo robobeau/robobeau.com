@@ -4,6 +4,7 @@ import { Feed } from "feed";
 import { NextRequest } from "next/server";
 
 async function GET(request: NextRequest) {
+  const blogUrl = `${BASE_URL}/blog`
   const feed = new Feed({
     author: {
       email: MY_EMAIL,
@@ -11,9 +12,12 @@ async function GET(request: NextRequest) {
     },
     copyright: `All rights reserved ${new Date().getFullYear()}, ${MY_NAME}`,
     description: `${MY_NAME}' blog.`,
-    id: `${BASE_URL}/blog`,
+    feedLinks: {
+      atom: `${blogUrl}/rss`,
+    },
+    id: blogUrl,
     language: "en",
-    link: `${BASE_URL}/blog`,
+    link: blogUrl,
     title: `${MY_HANDLE} Blog RSS Feed`,
   });
   const blogService = createBlogService();
