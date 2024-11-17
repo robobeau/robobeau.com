@@ -1,6 +1,5 @@
 import { BASE_URL, MY_EMAIL, MY_HANDLE, MY_NAME } from "@/constants";
 import createBlogService from "@/services/blog";
-import crypto from "crypto";
 import { Feed } from "feed";
 import { NextRequest } from "next/server";
 
@@ -11,6 +10,7 @@ async function GET(request: NextRequest) {
       name: MY_NAME,
     },
     copyright: `All rights reserved ${new Date().getFullYear()}, ${MY_NAME}`,
+    description: `${MY_NAME}' blog.`,
     id: `${BASE_URL}/blog`,
     language: "en",
     link: `${BASE_URL}/blog`,
@@ -20,15 +20,17 @@ async function GET(request: NextRequest) {
   const blogs = await blogService.getBlogs();
 
   blogs.forEach((blog) => {
-    const { content, date, link, title } = blog;
-    const id = crypto.createHash("md5").update(title).digest("hex");
+    const { content, date, description, path, title } = blog;
+    const fullUrl = `${BASE_URL}${path}`
+    const id = fullUrl;
 
     feed.addItem({
+      content,
+      description,
       id,
       title,
-      content,
       date: new Date(date),
-      link: `${BASE_URL}${link}`,
+      link: fullUrl,
     });
   });
 

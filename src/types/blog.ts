@@ -2,13 +2,15 @@ type Blog = {
   author: string;
   content: string;
   date: Date;
-  link: string;
+  description: string;
+  path: string;
   title: string;
 };
 
 interface BlogMetadata {
   author: string;
   date: string;
+  description: string;
   title: string;
 }
 

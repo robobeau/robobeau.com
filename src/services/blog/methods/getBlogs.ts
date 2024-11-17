@@ -40,7 +40,7 @@ async function getBlogs() {
 
 async function getMetadataFromFilePath(filePath: string): Promise<Blog> {
   const [_, relativeFilePath] = filePath.match(/^.*blogs(.*)\.md$/) ?? [];
-  const link = `/blog${relativeFilePath.replace(/\\/g, "/")}`;
+  const path = `/blog${relativeFilePath.replace(/\\/g, "/")}`;
   const vFile = await read(filePath, {
     encoding: "utf-8",
   });
@@ -53,11 +53,12 @@ async function getMetadataFromFilePath(filePath: string): Promise<Blog> {
     .use(rehypeStringify)
     .process(vFile);
   const { data, value } = processedFile;
-  const { author, date, title } = data.matter as BlogMetadata;
+  const { author, date, description, title } = data.matter as BlogMetadata;
 
   return {
     author,
-    link,
+    description,
+    path,
     title,
     content: String(value),
     date: new Date(date),

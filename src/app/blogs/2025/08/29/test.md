@@ -1,6 +1,7 @@
 ---
   author: 'René Esteves'
   date: '2024/08/29'
+  description: 'A test blog.'
   title: 'Proin vehicula vestibulum lacus mattis odio scelerisque.'
 ---
 

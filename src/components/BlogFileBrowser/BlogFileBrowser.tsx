@@ -58,9 +58,9 @@ const BlogFileBrowser: FC<BlogFileBrowserProps> = (props) => {
 
               <ul className="ml-5">
                 {blogs.map((blog, index, array) => {
-                  const { link, title } = blog;
+                  const { path, title } = blog;
 
-                  const isCurrentPath = pathname === link;
+                  const isCurrentPath = pathname === path;
                   const currentPathClass = isCurrentPath
                     ? "bg-blue-800 border border-dotted border-white text-white"
                     : "p-0.5";
@@ -78,7 +78,7 @@ const BlogFileBrowser: FC<BlogFileBrowserProps> = (props) => {
 
                       <Link
                         className={`${currentPathClass} box-border flex gap-1 items-center overflow-hidden pr-1 whitespace-nowrap`}
-                        href={link}
+                        href={path}
                       >
                         <Image
                           alt="folder"
