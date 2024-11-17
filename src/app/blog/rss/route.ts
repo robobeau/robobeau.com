@@ -13,7 +13,7 @@ async function GET(request: NextRequest) {
     copyright: `All rights reserved ${new Date().getFullYear()}, ${MY_NAME}`,
     description: `${MY_NAME}' blog.`,
     feedLinks: {
-      atom: `${blogUrl}/rss`,
+      rss: `${blogUrl}/rss`,
     },
     id: blogUrl,
     language: "en",
