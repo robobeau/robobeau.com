@@ -6,7 +6,7 @@ import Program from "@/components/Program/Program";
 import BreakpointContext from "@/contexts/BreakpointContext";
 import Breakpoint from "@/enums/breakpoint";
 
-import AboutMe from "./about-me.md";
+import AboutMe from "./about-me.mdx";
 import aboutMeProgramIcon from "./programIcon";
 
 const initialOffsets = {
