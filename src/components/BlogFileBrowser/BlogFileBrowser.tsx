@@ -21,7 +21,7 @@ const BlogFileBrowser: FC<BlogFileBrowserProps> = (props) => {
   const listItemClasses = "h-6 text-sm";
 
   return (
-    <nav className="h-full overflow-auto p-4">
+    <nav>
       <ul>
         <li className={listItemClasses}>
           <div className="flex gap-1 items-center">

@@ -33,11 +33,7 @@ const Blog = async (props: Page<BlogParams>) => {
     }
   );
 
-  return (
-    <main className="overflow-auto p-4">
-      <Blog />
-    </main>
-  );
+  return <Blog />;
 };
 
 export { Blog as default, generateMetadata, type BlogParams };

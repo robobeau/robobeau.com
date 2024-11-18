@@ -55,17 +55,17 @@ const BlogProgram: FC<PropsWithChildren> = (props) => {
 
   return (
     <Program
-      hasPadding={false}
       icon={programIcon.image}
       initialSize={initialSize}
-      isScrollable={false}
       menu={blogMenu}
       offset={initialOffset}
       origin={origin}
       title="Blog"
       zIndexOffset={1}
     >
-      {children}
+      <main>
+        {children}
+      </main>
     </Program>
   );
 };
