@@ -1,3 +1,4 @@
+import kingdom from "@/fonts/kingdom";
 import w95fa from "@/fonts/w95fa";
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
@@ -14,12 +15,36 @@ function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ children }) => (
       <code className={`${w95fa.className}`}>{children}</code>
     ),
-    h1: ({ children }) => <h1 className="mb-4 text-4xl">{children}</h1>,
-    h2: ({ children }) => <h2 className="mb-3 text-3xl">{children}</h2>,
-    h3: ({ children }) => <h3 className="mb-2.5 text-2xl">{children}</h3>,
-    h4: ({ children }) => <h4 className="mb-2 text-xl">{children}</h4>,
-    h5: ({ children }) => <h5 className="mb-1.5 text-lg">{children}</h5>,
-    h6: ({ children }) => <h6 className="mb-1 text-base">{children}</h6>,
+    h1: ({ children }) => (
+      <h1 className={`leading-[0.75] mb-6 text-6xl drop-shadow-md ${kingdom.className}`}>
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className={`leading-[0.75] my-6 text-5xl drop-shadow-md ${kingdom.className}`}>
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className={`leading-[0.75] my-6 text-4xl drop-shadow-md ${kingdom.className}`}>
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className={`leading-[0.75] my-6 text-3xl drop-shadow-md ${kingdom.className}`}>
+        {children}
+      </h4>
+    ),
+    h5: ({ children }) => (
+      <h5 className={`leading-[0.75] my-6 text-2xl drop-shadow-md ${kingdom.className}`}>
+        {children}
+      </h5>
+    ),
+    h6: ({ children }) => (
+      <h6 className={`leading-[0.75] my-6 text-xl drop-shadow-md ${kingdom.className}`}>
+        {children}
+      </h6>
+    ),
     hr: () => <hr className="my-4" />,
     ol: ({ children }) => (
       <ol className="list-decimal list-inside mb-2">{children}</ol>
