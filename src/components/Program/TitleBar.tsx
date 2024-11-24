@@ -25,7 +25,7 @@ interface TitleBarProps {
 const MaximizeIcon: FC = () => {
   const className = classNames(
     "icon",
-    "border-b-black border-b-[6px] top-[-1px]"
+    "border-b-slate-700 border-b-[6px] top-[-1px]"
   );
 
   return <span className={className}></span>;
@@ -34,7 +34,7 @@ const MaximizeIcon: FC = () => {
 const MinimizeIcon: FC = () => {
   const className = classNames(
     "icon",
-    "border-t-black border-t-[6px] top-[1px]"
+    "border-t-slate-700 border-t-[6px] top-[1px]"
   );
 
   return <span className={className}></span>;
@@ -43,11 +43,11 @@ const MinimizeIcon: FC = () => {
 const RestoreIcon: FC = () => {
   const upArrowClassName = classNames(
     "icon",
-    "border-b-black border-b-[6px] top-[-1px]"
+    "border-b-slate-700 border-b-[6px] top-[-1px]"
   );
   const downArrowClassName = classNames(
     "icon",
-    "border-t-black border-t-[6px] top-[1px]"
+    "border-t-slate-700 border-t-[6px] top-[1px]"
   );
 
   return (

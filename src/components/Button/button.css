@@ -5,11 +5,11 @@
 @layer components {
   /* #region Button */
   .button {
-    @apply bg-gray-200 border border-black leading-4
+    @apply bg-gray-200 border border-slate-700 leading-4
   }
 
   .button--with-outline {
-    @apply focus-within:outline focus-within:outline-1 focus-within:outline-black
+    @apply focus-within:outline focus-within:outline-1 focus-within:outline-slate-700
   }
 
   .button--with-rounded-corners {

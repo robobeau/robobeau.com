@@ -108,7 +108,7 @@ const Window: FC<WindowProps> = (props) => {
   const resizableBoxClassNames = classNames(isMaximized && "!size-full");
   const windowClassNames = classNames(
     "bg-gray-300 flex h-full w-full",
-    !isMaximized && "border-4 border-black border-double"
+    !isMaximized && "border-4 border-slate-700 border-double"
   );
   // #endregion
 

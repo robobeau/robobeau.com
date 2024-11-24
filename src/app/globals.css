@@ -4,6 +4,8 @@
 
 html,
 body {
+  @apply text-slate-700;
+
   height: 100%;
   width: 100%;
 }

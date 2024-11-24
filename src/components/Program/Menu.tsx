@@ -28,7 +28,7 @@ const Menu: FC<MenuProps> = (props) => {
   `.trim();
 
   return (
-    <div className="border-b border-black flex items-center relative">
+    <div className="border-b border-slate-700 flex items-center relative">
       {menu.map((menuItem, index) => {
         const { url, label, target } = menuItem;
         const [firstLetter, ...rest] = label.split("");
