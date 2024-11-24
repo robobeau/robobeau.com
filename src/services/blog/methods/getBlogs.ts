@@ -3,6 +3,7 @@ import path from "path";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { read } from "to-vfile";
@@ -32,22 +33,24 @@ async function getBlogs() {
   const blogsDirectory = path.join(process.cwd(), BLOGS_DIRECTORY);
   const filePaths = getBlogFilePaths(blogsDirectory);
 
-  const promises = filePaths.map(getMetadataFromFilePath);
+  const promises = filePaths.map(getBlogFromFilePath);
   const blogs = await Promise.all(promises);
 
   return blogs;
 }
 
-async function getMetadataFromFilePath(filePath: string): Promise<Blog> {
+async function getBlogFromFilePath(filePath: string): Promise<Blog> {
   const [_, relativeFilePath] = filePath.match(/^.*blogs(.*)\.md$/) ?? [];
   const path = `/blog${relativeFilePath.replace(/\\/g, "/")}`;
   const vFile = await read(filePath, {
     encoding: "utf-8",
   });
+  // The order of these plugins matters!
   const processedFile = await unified()
-    .use(remarkFrontmatter)
     .use(parseFrontmatter)
     .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkFrontmatter)
     .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeStringify)
@@ -66,4 +69,3 @@ async function getMetadataFromFilePath(filePath: string): Promise<Blog> {
 }
 
 export { getBlogs as default };
-

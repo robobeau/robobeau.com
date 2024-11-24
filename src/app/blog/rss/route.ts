@@ -4,7 +4,7 @@ import { Feed } from "feed";
 import { NextRequest } from "next/server";
 
 async function GET(request: NextRequest) {
-  const blogUrl = `${BASE_URL}/blog`
+  const blogUrl = `${BASE_URL}/blog`;
   const feed = new Feed({
     author: {
       email: MY_EMAIL,
@@ -25,16 +25,15 @@ async function GET(request: NextRequest) {
 
   blogs.forEach((blog) => {
     const { content, date, description, path, title } = blog;
-    const fullUrl = `${BASE_URL}${path}`
-    const id = fullUrl;
+    const link = `${BASE_URL}${path}`;
 
     feed.addItem({
       content,
       description,
-      id,
+      link,
       title,
       date: new Date(date),
-      link: fullUrl,
+      id: link,
     });
   });
 
