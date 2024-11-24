@@ -13,7 +13,7 @@ function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     blockquote: ({ children }) => <blockquote>{children}</blockquote>,
     code: ({ children }) => (
-      <code className={`${w95fa.className}`}>{children}</code>
+      <code className={`bg-teal-700 p-1 text-white ${w95fa.className}`}>{children}</code>
     ),
     h1: ({ children }) => (
       <h1 className={`leading-[0.75] mb-6 text-6xl drop-shadow-md ${kingdom.className}`}>
@@ -46,15 +46,16 @@ function useMDXComponents(components: MDXComponents): MDXComponents {
       </h6>
     ),
     hr: () => <hr className="my-4" />,
+    li: ({ children }) => <li className="mb-2">{children}</li>,
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside mb-2">{children}</ol>
+      <ol className="list-decimal list-outside mb-2 pl-5">{children}</ol>
     ),
     p: ({ children }) => <p className="my-2">{children}</p>,
     pre: ({ children }) => (
       <pre className="bg-gray-100 leading-3 p-2">{children}</pre>
     ),
     ul: ({ children }) => (
-      <ul className="list-square list-inside mb-2 pl-2">{children}</ul>
+      <ul className="list-square list-outside mb-2 pl-5">{children}</ul>
     ),
   };
 }
