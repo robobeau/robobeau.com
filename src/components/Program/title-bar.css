@@ -5,7 +5,7 @@
 @layer components {
   /* #region Title Bar */
   .title-bar {
-    @apply border-slate-700 border-b bg-white flex items-stretch h-7 relative shrink-0 text-slate-700
+    @apply border-black border-b bg-white flex items-stretch h-7 relative shrink-0 text-black
   }
 
   .title-bar--focused {
@@ -15,21 +15,21 @@
 
   /* #region Close Button */
   .close-button {
-    @apply absolute bg-gray-300 border-slate-700 border-r bottom-0 cursor-pointer flex items-center justify-center left-0 outline-none text-white top-0 w-7 z-10
+    @apply absolute bg-gray-300 border-black border-r bottom-0 cursor-pointer flex items-center justify-center left-0 outline-none text-white top-0 w-7 z-10
   }
 
   .close-button:focus {
-    @apply bg-gray-400 text-slate-700
+    @apply bg-gray-400 text-black
   }
   /* #endregion */
 
   /* #region Close Button Icon */
   .close-button-icon {
-    @apply bg-white border-slate-700 border h-1 shadow-sm shadow-slate-800 w-1/2
+    @apply bg-white border-black border h-1 shadow-sm shadow-slate-800 w-1/2
   }
 
   .close-button-icon:focus {
-    @apply bg-slate-700 border-white shadow-white
+    @apply bg-black border-white shadow-white
   }
   /* #endregion */
 

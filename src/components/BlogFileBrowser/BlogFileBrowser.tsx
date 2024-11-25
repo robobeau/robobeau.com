@@ -41,7 +41,7 @@ const BlogFileBrowser: FC<BlogFileBrowserProps> = (props) => {
             <li className={listItemClasses}>
               <div className="flex gap-1 items-center">
                 <div className="self-stretch">
-                  <div className="border-b border-slate-700 border-l h-1/2 justify-self-end self-start w-2"></div>
+                  <div className="border-b border-black border-l h-1/2 justify-self-end self-start w-2"></div>
                 </div>
 
                 <Image
@@ -69,10 +69,10 @@ const BlogFileBrowser: FC<BlogFileBrowserProps> = (props) => {
                   return (
                     <li className={`${listItemClasses} flex`} key={index}>
                       <div className="self-stretch">
-                        <div className="border-b border-slate-700 border-l h-1/2 justify-self-end self-start w-2"></div>
+                        <div className="border-b border-black border-l h-1/2 justify-self-end self-start w-2"></div>
 
                         {!isLast && (
-                          <div className="border-l border-slate-700 h-1/2 justify-self-end self-end w-2"></div>
+                          <div className="border-l border-black h-1/2 justify-self-end self-end w-2"></div>
                         )}
                       </div>
 
