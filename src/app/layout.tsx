@@ -1,6 +1,8 @@
 import { FC, PropsWithChildren, ReactNode } from "react";
 
 import "@/app/globals.css";
+import "@/fonts/kingdom";
+import "@/fonts/w95fa";
 import BreakpointProvider from "@/providers/BreakpointProvider";
 import ZIndexProvider from "@/providers/ZIndexProvider";
 
