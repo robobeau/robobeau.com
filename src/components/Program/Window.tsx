@@ -98,7 +98,7 @@ const Window: FC<WindowProps> = (props) => {
   );
   const draggableClassNames = classNames(
     "absolute self-start shadow-md",
-    isMaximized && "inset-0 self-stretch",
+    isMaximized && "inset-0 self-stretch !translate-x-0 !translate-y-0 !z-[9999]",
     className
   );
   const minimizedDraggableClassNames = classNames(
