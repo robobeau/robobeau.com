@@ -33,7 +33,7 @@ const ResizableBox: FC<ResizableBoxProps> = (props) => {
     className,
     children,
     minConstraints = [240, 160],
-    maxConstraints = [800, 600],
+    maxConstraints,
     onResizeStart,
     resizeHandles = ["nw", "n", "ne", "w", "e", "sw", "s", "se"],
   } = props;
