@@ -1,14 +1,22 @@
 import { FC, PropsWithChildren, ReactNode } from "react";
 
 import "@/app/globals.css";
+import { BASE_URL, MY_HANDLE, MY_NAME } from "@/constants";
 import "@/fonts/kingdom";
 import "@/fonts/w95fa";
 import BreakpointProvider from "@/providers/BreakpointProvider";
 import ZIndexProvider from "@/providers/ZIndexProvider";
+import { Metadata } from "next";
 
 interface RootLayoutProps {
   main: ReactNode;
 }
+
+const metadata: Metadata = {
+  authors: { name: MY_NAME },
+  metadataBase: new URL(BASE_URL),
+  title: `${MY_HANDLE}.exe`,
+};
 
 const RootLayout: FC<PropsWithChildren<RootLayoutProps>> = (props) => {
   const { children, main } = props;
@@ -27,4 +35,4 @@ const RootLayout: FC<PropsWithChildren<RootLayoutProps>> = (props) => {
   );
 };
 
-export { RootLayout as default };
+export { RootLayout as default, metadata };

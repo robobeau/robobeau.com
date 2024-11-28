@@ -1,7 +1,7 @@
 const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "http://robobeau.com";
+    : "https://robobeau.com";
 const BLOGS_DIRECTORY = "src/app/blogs";
 const HANDLE_CLASS = "handle";
 const MENU_HOTKEY_EVENT = "MenuHotkey";
